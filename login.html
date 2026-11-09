@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="/assets/wanderlust-mountain-logo.png">
+  <title>Login or Create Account | Wanderlust</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/login.css">
+</head>
+<body>
+  <header class="top"><a class="logo" href="index.html" aria-label="Wanderlust home"><img src="/assets/wanderlust-mountain-logo.png" alt="Wanderlust"></a><nav><a href="index.html">Home</a><a href="packages.html">Packages</a><a href="bookings.html">My bookings</a><a id="account-link" href="login.html">Login</a></nav></header>
+  <main class="wrap page account-page">
+    <section class="login-layout">
+      <div class="login-story">
+        <div class="eyebrow light">A GOOD TRIP STARTS HERE</div>
+        <h1>Welcome to your next chapter.</h1>
+        <p>Sign in to keep your journeys, saved places, and plans together.</p>
+        <div class="login-story-note"><span>✦</span> Thoughtful trips, all in one place</div>
+      </div>
+      <div class="auth-panel">
+        <div class="eyebrow">YOUR WANDERLUST ACCOUNT</div>
+        <h2 id="auth-title">Welcome back</h2>
+        <p class="auth-intro" id="auth-intro">Log in to continue to your account.</p>
+        <div class="auth-tabs" role="tablist" aria-label="Choose account action">
+          <button class="auth-tab active" type="button" id="login-tab" role="tab" aria-selected="true">Log in</button>
+          <button class="auth-tab" type="button" id="register-tab" role="tab" aria-selected="false">Create account</button>
+        </div>
+        <p id="account-message" class="account-message" aria-live="polite"></p>
+        <form id="login-form" class="account-card">
+          <label>Email address<input name="email" type="email" required autocomplete="email" placeholder="you@example.com"></label>
+          <label>Password<input name="password" type="password" required autocomplete="current-password" placeholder="Enter your password"></label>
+          <button class="button" type="submit">Log in <span>→</span></button>
+        </form>
+        <form id="register-form" class="account-card" hidden>
+          <label>Your name<input name="name" required autocomplete="name" placeholder="Your name"></label>
+          <label>Email address<input name="email" type="email" required autocomplete="email" placeholder="you@example.com"></label>
+          <label>Password<input name="password" type="password" minlength="6" required autocomplete="new-password" placeholder="At least 6 characters"></label>
+          <button class="button" type="submit">Create my account <span>→</span></button>
+        </form>
+        <div class="demo-login"><b>Admin demo login</b><span>admin@wanderlust.com</span><span>travel123</span></div>
+        <p class="demo-note">Class project demo: account details are stored in this browser. Do not use a real password.</p>
+      </div>
+    </section>
+  </main>
+  <footer>Wanderlust Travel · Find your next adventure</footer>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

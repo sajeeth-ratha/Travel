@@ -1,0 +1,186 @@
+/* Edit this file to change shared styles used on every page. */
+/* Main colours and default font. Change these values to update the theme. */
+:root {
+  font-family: Arial, sans-serif;
+  color: #172b3a;
+  background: #fff;
+  --blue: #0085fb;
+  --navy: #07345f;
+  --light: #eff7ff;
+  --orange: #0085fb;
+}
+
+/* Basic rules used by all page elements. */
+* { box-sizing: border-box; }
+body { margin: 0; }
+a { color: inherit; text-decoration: none; }
+button, input, select { font: inherit; }
+button { cursor: pointer; }
+
+/* Top header: logo and links between the pages. */
+.top {
+  min-height: 94px;
+  padding: 16px max(calc((100% - 1160px) / 2), 24px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #e7ece9;
+}
+.logo { display: flex; align-items: center; flex: 0 0 auto; height: 62px; }
+.logo img { display: block; width: auto; height: 62px; object-fit: contain; }
+nav { display: flex; gap: 24px; font-size: 14px; font-weight: 600; }
+nav a:hover, .section-heading > a { color: var(--blue); }
+
+/* Large photo area and headline at the top of the home page. */
+.hero {
+  min-height: 490px;
+  padding: 54px max(calc((100% - 1160px) / 2), 24px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+  color: white;
+  background: linear-gradient(90deg, #092832bd, #09283230),
+    url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1800&q=85') center / cover;
+}
+.hero-text { max-width: 620px; }
+.hero h1 { margin: 12px 0; font: 500 clamp(42px, 6vw, 68px)/1.05 Georgia, serif; }
+.hero p { max-width: 480px; line-height: 1.7; color: #e4eeed; }
+.eyebrow { color: var(--blue); font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
+.eyebrow.light { color: #f3d39d; }
+
+/* Destination, date, and guest search form. */
+.search-box {
+  width: min(100%, 1050px);
+  padding: 16px;
+  border-radius: 8px;
+  color: var(--navy);
+  background: white;
+  box-shadow: 0 15px 40px #001b2630;
+}
+.search-fields { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr auto; gap: 10px; align-items: end; }
+.search-fields label, dialog label { display: grid; gap: 7px; font-size: 12px; font-weight: 700; }
+input, select { width: 100%; padding: 12px; border: 1px solid #d9e1de; border-radius: 4px; background: white; }
+.button { display: inline-block; padding: 13px 20px; border: 0; border-radius: 4px; color: white; background: var(--orange); font-weight: 700; }
+.button:hover { background: #0069d1; }
+.button.outline { color: var(--blue); background: white; border: 1px solid #b8cbc6; }
+.button.small { padding: 9px 13px; font-size: 13px; }
+
+/* Shared page width and spacing. */
+.wrap { max-width: 1160px; margin: auto; padding: 0 24px; }
+.page { min-height: 65vh; padding-top: 56px; padding-bottom: 80px; }
+.page > h1 { margin: 10px 0; font: 500 44px Georgia, serif; }
+.muted { color: #71818a; }
+.section-heading { display: flex; align-items: end; justify-content: space-between; margin: 62px 0 24px; }
+.section-heading h2, .about h2, .text-section h2, .admin-title h2 { margin: 8px 0; font: 500 34px Georgia, serif; }
+
+/* Trip cards shown on the home, packages, and wishlist pages. */
+.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.card { overflow: hidden; border: 1px solid #e3e9e6; border-radius: 7px; background: white; box-shadow: 0 5px 20px #193c2810; }
+.card img { display: block; width: 100%; height: 220px; object-fit: cover; }
+.card-body { padding: 18px; }
+.card-body h3 { min-height: 48px; margin: 8px 0; font: 500 20px Georgia, serif; }
+.card-body p { min-height: 62px; color: #6b7a7b; font-size: 13px; line-height: 1.6; }
+.card-bottom, .card-actions { display: flex; align-items: center; justify-content: space-between; }
+.card-bottom { margin-top: 14px; }
+.card-bottom small, .price-big small { color: #75827e; font-size: 12px; font-weight: 400; }
+.card-actions { padding: 0 18px 18px; }
+.heart { border: 0; color: var(--blue); background: none; font-weight: 700; }
+
+/* Intro section under the featured trips on the home page. */
+.about { display: flex; justify-content: space-between; gap: 30px; margin: 75px 0; padding: 38px; background: var(--light); }
+.about p { max-width: 520px; color: #607174; line-height: 1.8; }
+.catalog-search { display: flex; align-items: center; gap: 14px; margin: 28px 0; }
+.catalog-search input { max-width: 500px; }
+.catalog-search span { color: #64746f; font-size: 14px; }
+
+/* Trip photo, description, price, and itinerary on the detail page. */
+.detail-hero { display: grid; grid-template-columns: 1.15fr 1fr; align-items: center; gap: 42px; margin-top: 25px; }
+.detail-hero > img { width: 100%; height: 460px; border-radius: 7px; object-fit: cover; }
+.detail-hero h1 { font: 500 44px/1.13 Georgia, serif; }
+.detail-hero p, .text-section details p { color: #687975; line-height: 1.8; }
+.price-big { margin: 22px 0; font-size: 28px; font-weight: 700; }
+.back { color: var(--blue); }
+.text-section { max-width: 760px; margin: 55px 0; }
+.text-section details { padding: 18px 0; border-bottom: 1px solid #dfe7e3; }
+.text-section summary { cursor: pointer; font-weight: 700; }
+
+/* Booking status buttons and booking information cards. */
+.tabs { display: flex; gap: 8px; margin: 28px 0; }
+.tab { padding: 10px 16px; border: 1px solid #dce4e0; border-radius: 4px; background: white; color: #567; }
+.tab.selected { color: white; background: var(--navy); }
+.booking-list { display: grid; gap: 14px; }
+.booking { display: grid; grid-template-columns: 1fr 150px 90px; align-items: center; gap: 20px; padding: 20px; border: 1px solid #e1e8e4; border-radius: 6px; }
+.booking h3 { margin: 7px 0; }
+.booking p { margin: 5px 0; color: #74827f; }
+.status { font-size: 13px; }
+.danger { background: #a94444; }
+
+/* Admin summary numbers and data tables. */
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 28px 0; }
+.stats > div { display: grid; gap: 10px; padding: 20px; background: var(--light); }
+.stats span { color: #667; font-size: 13px; }
+.stats b { font-size: 25px; }
+.admin-title { display: flex; align-items: center; gap: 12px; margin: 30px 0 15px; }
+.admin-title h2 { margin-right: auto; }
+.table-wrap { overflow-x: auto; margin-bottom: 40px; }
+table { width: 100%; min-width: 670px; border-collapse: collapse; font-size: 14px; }
+th, td { padding: 14px 10px; border-bottom: 1px solid #e2e9e5; text-align: left; }
+th { color: #51635e; background: var(--light); }
+td button { border: 0; color: var(--blue); background: none; font-weight: 700; }
+td .danger-text { color: #a94444; }
+
+/* Shared footer and the booking form pop-up. */
+footer { padding: 30px; color: white; background: var(--navy); text-align: center; font-size: 13px; }
+dialog { width: min(480px, calc(100% - 30px)); padding: 30px; border: 0; border-radius: 8px; box-shadow: 0 20px 90px #0005; }
+dialog::backdrop { background: #102b35a8; }
+dialog form { display: grid; gap: 13px; }
+dialog h2 { margin: 0 0 10px; font: 500 27px Georgia, serif; }
+dialog form p { color: #657; font-size: 13px; }
+/* Checkout note and disabled button while the demo payment is processing. */
+.payment-note { padding: 10px; border-radius: 4px; background: var(--light); }
+dialog button:disabled { cursor: wait; opacity: 0.7; }
+/* Discount code field and the demo checkout price summary. */
+.promo-row { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 10px; }
+.promo-row .button { min-height: 43px; padding: 10px 16px; }
+.promo-message { min-height: 0; margin: -7px 0 0; }
+.promo-message.success { color: #216b50; }
+.promo-message.error { color: #a94444; }
+.checkout-summary { display: grid; gap: 8px; padding: 14px; border-radius: 5px; background: var(--light); }
+.checkout-summary > div { display: flex; justify-content: space-between; gap: 12px; color: #687975; font-size: 13px; }
+.checkout-summary .checkout-total-row { padding-top: 9px; border-top: 1px solid #dce4df; color: #24373b; font-size: 16px; }
+.discount-saved { display: inline-block; color: #216b50; font-size: 11px; }
+/* Rewards checkbox and details inside the demo booking form. */
+.reward-choice { display: flex !important; grid-template-columns: none !important; align-items: center; gap: 10px !important; padding: 11px; border: 1px solid #e2e9e4; border-radius: 5px; background: #f8faf8; }
+.reward-choice input { width: 16px; height: 16px; margin: 0; padding: 0; border: 0; accent-color: var(--blue); }
+.reward-choice span { display: grid; gap: 4px; }
+.reward-choice b { color: #364b46; font-size: 12px; }
+.reward-choice small { color: #75827e; font-size: 10px; font-weight: 400; }
+.reward-choice input:disabled { cursor: not-allowed; }
+dialog .close { position: absolute; top: 14px; right: 18px; border: 0; background: transparent; font-size: 25px; }
+
+/* Tablet layout: fit the menu and cards into a narrower screen. */
+@media (max-width: 780px) {
+  .top { flex-wrap: wrap; gap: 14px; }
+  .logo, .logo img { height: 54px; }
+  nav { flex-wrap: wrap; gap: 12px; font-size: 12px; }
+  .search-fields { grid-template-columns: repeat(2, 1fr); }
+  .cards { grid-template-columns: repeat(2, 1fr); }
+  .detail-hero { grid-template-columns: 1fr; }
+  .detail-hero > img { height: 320px; }
+  .booking { grid-template-columns: 1fr 120px; }
+  .about { display: block; }
+}
+/* Phone layout: stack content in one column. */
+@media (max-width: 520px) {
+  .top { justify-content: center; }
+  .logo, .logo img { height: 48px; }
+  nav { justify-content: center; width: 100%; }
+  .hero { padding-top: 45px; padding-bottom: 45px; }
+  .hero h1 { font-size: 48px; }
+  .search-fields, .cards, .stats, .booking { grid-template-columns: 1fr; }
+  .section-heading { align-items: start; }
+  .page > h1 { font-size: 37px; }
+  .admin-title { flex-wrap: wrap; }
+  .admin-title h2 { width: 100%; }
+}

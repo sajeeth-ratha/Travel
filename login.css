@@ -1,0 +1,44 @@
+/* Login page: keep the welcome panel and form centered beneath the site menu. */
+.account-page { max-width: 1060px; padding-top: 52px; padding-bottom: 66px; }
+.login-layout { display: grid; grid-template-columns: .9fr 1.1fr; min-height: 590px; overflow: hidden; border: 1px solid #e2e6df; border-radius: 9px; background: white; box-shadow: 0 14px 40px #172f2810; }
+
+/* Welcome panel uses a destination photograph to make sign-in feel connected to travel. */
+.login-story { display: flex; flex-direction: column; justify-content: end; min-height: 590px; padding: 44px; color: white; background: linear-gradient(180deg, #152c2d05 10%, #10292bdb 100%), url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1200&q=85') center / cover; }
+.login-story .eyebrow.light { color: #9dccff; }
+.login-story h1 { max-width: 400px; margin: 12px 0; font: 500 clamp(36px, 4.2vw, 53px)/1.06 Georgia, serif; }
+.login-story > p { max-width: 360px; color: #eff3ee; font-size: 13px; line-height: 1.7; }
+.login-story-note { display: flex; align-items: center; gap: 9px; margin-top: 21px; color: #f7f5eb; font-size: 11px; }
+.login-story-note span { color: #9dccff; font-size: 20px; }
+
+/* The account panel has a compact toggle so sign-in and sign-up do not compete. */
+.auth-panel { align-self: center; width: min(100%, 470px); margin: auto; padding: 46px clamp(24px, 5vw, 55px); }
+.auth-panel h2 { margin: 10px 0 5px; color: #263a3b; font: 500 34px Georgia, serif; }
+.auth-intro { margin: 0; color: #75827e; font-size: 12px; }
+.auth-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin: 25px 0 16px; padding: 4px; border-radius: 5px; background: #f1f3ef; }
+.auth-tab { padding: 10px; border: 0; border-radius: 4px; color: #6c7a75; background: transparent; font-size: 12px; font-weight: 700; }
+.auth-tab.active { color: #28413e; background: white; box-shadow: 0 2px 8px #18302714; }
+.account-message { min-height: 18px; margin: 0 0 8px; color: #a94444; font-size: 12px; }
+.account-message.success { color: #216b50; }
+.account-card { display: grid; align-content: start; gap: 15px; }
+.account-card[hidden] { display: none; }
+.account-card label { display: grid; gap: 7px; color: #475b57; font-size: 11px; font-weight: 700; }
+.account-card input { min-height: 45px; padding: 12px 13px; border-color: #dce3dd; border-radius: 4px; font-size: 13px; }
+.account-card input:focus { border-color: var(--blue); outline: 3px solid var(--blue)20; }
+.account-card .button { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 3px; }
+
+/* Demo credentials are visible but separate from the customer sign-in form. */
+.demo-login { display: grid; gap: 4px; margin-top: 19px; padding: 13px; border: 1px solid #e5e9e3; border-radius: 4px; background: #f8f8f4; }
+.demo-login b { margin-bottom: 2px; color: #596c66; font-size: 10px; }
+.demo-login span { color: #74817d; font-size: 10px; }
+.demo-note { margin: 12px 0 0; color: #89948f; font-size: 10px; line-height: 1.55; }
+
+/* On phones, keep the photo welcome short so the form stays near the top. */
+@media (max-width: 700px) {
+  .account-page { padding-top: 28px; }
+  .login-layout { grid-template-columns: 1fr; }
+  .login-story { min-height: 220px; padding: 27px; }
+  .login-story h1 { max-width: 360px; font-size: 37px; }
+  .login-story > p { margin-bottom: 0; }
+  .login-story-note { margin-top: 12px; }
+  .auth-panel { padding: 30px 25px; }
+}

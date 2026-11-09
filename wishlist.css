@@ -1,0 +1,2 @@
+/* WISHLIST PAGE: separate the saved trip cards from the page title. */
+.page > .cards { margin-top: 28px; }

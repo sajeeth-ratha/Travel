@@ -1,0 +1,269 @@
+/* Admin workspace: a pale background separates the dashboard from public pages. */
+.admin-workspace { min-height: calc(100vh - 140px); padding: 25px max(calc((100% - 1240px) / 2), 24px) 58px; background: #f5faff; }
+.admin-toolbar { display: flex; align-items: center; gap: 19px; }
+.admin-toolbar > h1 { flex: 1; margin: 0; color: #27323a; font: 700 22px Arial, sans-serif; }
+.admin-search { display: flex; align-items: center; gap: 8px; width: min(310px, 30vw); padding: 0 12px; border: 1px solid #dceeff; border-radius: 22px; background: white; }
+.admin-search .search-icon { color: var(--blue); font-size: 23px; line-height: 1; }
+.admin-search input { min-width: 0; padding: 10px 0; border: 0; outline: 0; background: transparent; font-size: 11px; }
+.admin-user { display: flex; align-items: center; gap: 9px; padding-left: 14px; border-left: 1px solid #dce8f4; }
+.admin-avatar { display: grid; width: 34px; height: 34px; place-items: center; border-radius: 50%; color: white; background: #445c62; font-size: 13px; font-weight: 700; }
+.admin-user > span:last-child { display: grid; gap: 3px; }
+.admin-user b { color: #34414a; font-size: 10px; }
+.admin-user small { color: #85828f; font-size: 9px; }
+.admin-logout { padding: 9px 11px; border: 1px solid #e5e0eb; border-radius: 5px; color: #6e5b82; background: white; font-size: 10px; font-weight: 700; }
+
+/* Breadcrumb makes the guest detail view feel like part of a larger workspace. */
+.admin-breadcrumb { display: flex; align-items: center; gap: 8px; margin: 22px 0 12px; color: #85828f; font-size: 10px; }
+.admin-breadcrumb a { color: var(--blue); font-weight: 700; }
+.admin-breadcrumb b { color: #46525a; font-weight: 600; }
+
+/* Guest profile sits beside reservation details, matching the reference layout. */
+.guest-layout { display: grid; grid-template-columns: 225px minmax(0, 1fr); gap: 16px; align-items: stretch; scroll-margin-top: 20px; }
+.guest-profile, .current-booking, .booking-history, .package-manager { border: 1px solid #e4eff9; border-radius: 9px; background: white; box-shadow: 0 4px 16px #2a183008; }
+.guest-profile { position: relative; display: flex; min-height: 278px; flex-direction: column; align-items: center; padding: 0 15px 19px; overflow: hidden; text-align: center; }
+.guest-cover { position: absolute; top: 0; left: 0; width: 100%; height: 82px; background: #eaf4ff url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=700&q=80') center 55% / cover; }
+.guest-avatar { z-index: 1; display: grid; width: 72px; height: 72px; place-items: center; margin-top: 44px; border: 4px solid white; border-radius: 50%; color: white; background: var(--blue); box-shadow: 0 3px 12px #2511391d; font: 500 24px Georgia, serif; }
+.guest-reference { margin-top: 7px; color: var(--blue); font-size: 9px; }
+.guest-profile h2 { margin: 5px 0 2px; color: #374249; font-size: 13px; }
+.guest-label { min-height: 12px; margin: 0 0 14px; color: #8c8993; font-size: 9px; }
+.guest-contact { display: flex; align-items: center; gap: 8px; width: 100%; margin-top: 9px; color: #58626b; font-size: 9px; text-align: left; overflow-wrap: anywhere; }
+.guest-contact span { display: grid; width: 24px; height: 24px; flex: 0 0 24px; place-items: center; border: 1px solid #d7eaff; border-radius: 50%; color: var(--blue); font-size: 12px; }
+
+/* Reservation card summarizes the chosen guest booking and destination. */
+.current-booking { min-width: 0; padding: 17px 19px; }
+.current-heading, .history-heading { display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+.current-heading .eyebrow { margin-bottom: 4px; color: #697780; font-size: 9px; letter-spacing: 1.1px; }
+.current-heading h2, .history-heading h2 { margin: 0; color: #34414a; font-size: 15px; }
+.status-pill { padding: 6px 9px; border-radius: 15px; color: #277450; background: #e9f5ed; font-size: 9px; font-weight: 700; }
+.status-pill.pending { color: #946417; background: #fff4dd; }
+.status-pill.cancelled { color: #a84d47; background: #fbebea; }
+.booking-summary { display: grid; grid-template-columns: 42px minmax(135px, 1.4fr) repeat(3, minmax(75px, .7fr)); align-items: center; gap: 10px; margin: 15px 0 11px; }
+.booking-key { display: grid; width: 40px; height: 40px; place-items: center; border-radius: 50%; color: white; background: #8550c8; font-size: 22px; }
+.booking-title small { color: #8c57d0; font-size: 9px; }
+.booking-title h3 { margin: 4px 0 0; color: #37434a; font-size: 11px; }
+.booking-fact { display: grid; gap: 5px; min-width: 0; }
+.booking-fact small { color: #8b9097; font-size: 8px; }
+.booking-fact b { overflow: hidden; color: #4b565d; font-size: 9px; text-overflow: ellipsis; white-space: nowrap; }
+.booking-highlight { display: flex; justify-content: space-between; gap: 15px; margin: 9px 0 11px; }
+.booking-highlight span { flex: 0 0 auto; color: #46545a; font-size: 10px; font-weight: 700; }
+.booking-highlight p { margin: 0; color: #747d82; font-size: 8px; line-height: 1.5; text-align: right; }
+.admin-trip-photos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; height: 105px; overflow: hidden; }
+.admin-trip-photo { position: relative; min-width: 0; overflow: hidden; border-radius: 6px; background: #eeedf1; }
+.admin-trip-photo img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .3s ease; }
+.admin-trip-photo:hover img { transform: scale(1.04); }
+.admin-trip-photo.photo-overlay::after { position: absolute; inset: 0; content: ""; background: #21162f52; }
+.admin-trip-photo.photo-overlay span { position: absolute; z-index: 1; inset: 0; display: grid; place-items: center; color: white; font-size: 10px; font-weight: 700; }
+.booking-bottom { display: flex; justify-content: space-between; margin-top: 10px; color: #848991; font-size: 9px; }
+.booking-bottom b { color: #39454c; font-size: 11px; }
+.empty-booking { display: grid; min-height: 200px; place-items: center; color: #8b8993; font-size: 11px; text-align: center; }
+
+/* Booking history keeps status controls and guest rows in a clean table. */
+.booking-history { margin-top: 15px; padding: 17px 20px 5px; }
+.history-heading { margin-bottom: 11px; }
+.history-heading .eyebrow { margin-bottom: 4px; color: var(--blue); font-size: 8px; letter-spacing: 1px; }
+.history-heading > span { color: #8b8993; font-size: 9px; }
+.booking-history .table-wrap { margin: 0; overflow-x: auto; }
+.booking-history table { min-width: 840px; font-size: 10px; }
+.booking-history th { padding: 11px 9px; border-top: 1px solid #e7f2fd; color: #79828a; background: white; font-size: 8px; font-weight: 700; }
+.booking-history td { padding: 10px 9px; color: #56626a; font-size: 9px; }
+.booking-history td:first-child b { color: var(--blue); font-size: 9px; }
+.booking-history select { min-width: 95px; padding: 6px 7px; border-color: #d7eaff; border-radius: 4px; font-size: 9px; }
+.view-booking { padding: 6px 10px; border: 1px solid #d7eaff; border-radius: 4px; color: var(--blue); background: #f5faff; font-size: 9px; font-weight: 700; }
+.no-bookings { padding: 22px !important; color: #85828f !important; text-align: center; }
+
+/* Package management stays available below the guest and reservation view. */
+.package-manager { margin-top: 15px; padding: 0 18px; }
+.package-manager > summary { display: flex; align-items: center; justify-content: space-between; padding: 15px 0; list-style: none; cursor: pointer; }
+.package-manager > summary::-webkit-details-marker { display: none; }
+.package-manager > summary > span:first-child { display: grid; gap: 4px; }
+.package-manager > summary small { color: var(--blue); font-size: 8px; font-weight: 700; letter-spacing: 1px; }
+.package-manager > summary b { color: #34414a; font-size: 12px; }
+.manager-plus { display: grid; width: 25px; height: 25px; place-items: center; border: 1px solid #d7eaff; border-radius: 50%; color: var(--blue); font-size: 18px; transition: transform .2s ease; }
+.package-manager[open] .manager-plus { transform: rotate(45deg); }
+.admin-section { padding: 5px 0 0; border-top: 1px solid #e7f2fd; }
+.admin-title { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 13px 0; }
+.admin-title h2 { margin: 5px 0 0; color: #34414a; font-size: 14px; }
+.admin-actions { display: flex; flex-wrap: wrap; gap: 7px; }
+.admin-actions .button { padding: 8px 10px; font-size: 9px; }
+.admin-actions .button.outline { color: #6e5b82; }
+.admin-section .table-wrap { margin-bottom: 14px; overflow-x: auto; }
+.admin-section table { min-width: 650px; font-size: 10px; }
+.admin-section th { padding: 9px; color: #79828a; background: #f5faff; font-size: 8px; }
+.admin-section td { padding: 9px; color: #56626a; font-size: 9px; }
+.admin-section td button { padding: 4px 7px; border-radius: 3px; background: #f1f7ff; font-size: 9px; }
+.admin-section td .danger-text { color: #a34d40; background: #fbf1ed; }
+
+/* Stack the guest card and booking details cleanly on tablet and phone. */
+@media (max-width: 850px) {
+  .admin-toolbar { flex-wrap: wrap; }
+  .admin-toolbar > h1 { flex-basis: 100%; }
+  .admin-search { flex: 1; width: auto; }
+  .guest-layout { grid-template-columns: 190px minmax(0, 1fr); gap: 10px; }
+  .booking-summary { grid-template-columns: 38px minmax(120px, 1fr) repeat(3, minmax(60px, .6fr)); gap: 7px; }
+  .booking-highlight { display: block; }
+  .booking-highlight p { margin-top: 5px; text-align: left; }
+}
+@media (max-width: 620px) {
+  .admin-workspace { padding: 18px 14px 38px; }
+  .admin-toolbar { gap: 10px; }
+  .admin-toolbar > h1 { font-size: 20px; }
+  .admin-search { order: 3; flex: 0 0 100%; }
+  .admin-user { margin-left: auto; }
+  .guest-layout { grid-template-columns: 1fr; }
+  .guest-profile { min-height: auto; padding-bottom: 15px; }
+  .guest-cover { height: 65px; }
+  .guest-avatar { width: 62px; height: 62px; margin-top: 34px; }
+  .guest-contact { max-width: 260px; }
+  .current-booking { padding: 15px; }
+  .booking-summary { grid-template-columns: 38px minmax(0, 1fr) 1fr; }
+  .booking-title { grid-column: 2 / 4; }
+  .booking-fact:first-of-type { grid-column: 2; }
+  .admin-trip-photos { height: 90px; gap: 5px; }
+  .booking-history { padding: 15px 12px 4px; }
+  .admin-title { align-items: flex-start; flex-direction: column; }
+}
+
+/* Match the travel pages' shared width, colours, and readable type sizes. */
+.admin-workspace { width: min(100%, 1160px); min-height: 65vh; margin: 0 auto; padding: 36px 24px 72px; color: #172b3a; background: white; }
+.admin-toolbar > h1 { color: var(--navy); font: 500 34px/1.15 Georgia, serif; }
+.admin-search { border-color: #d9e1de; border-radius: 5px; }
+.admin-search .search-icon, .admin-breadcrumb a, .guest-reference, .booking-title small, .history-heading .eyebrow, .package-manager > summary small { color: var(--blue); }
+.admin-search input { font-size: 13px; }
+.admin-user b { color: var(--navy); font-size: 12px; }
+.admin-user small, .admin-breadcrumb, .admin-user small { font-size: 10px; }
+.admin-avatar, .guest-avatar, .booking-key { background: var(--blue); }
+.admin-logout { border-color: #b9d8f5; color: var(--blue); font-size: 11px; }
+.guest-layout { grid-template-columns: 225px minmax(0, 1fr); gap: 18px; }
+.guest-profile, .current-booking, .booking-history, .package-manager { border-color: #e3e9e6; border-radius: 7px; box-shadow: 0 4px 18px #193c280b; }
+.guest-reference { font-size: 10px; }
+.guest-profile h2 { color: #24373b; font-size: 16px; }
+.guest-label { font-size: 11px; }
+.guest-contact { color: #536762; font-size: 11px; }
+.guest-contact span { border-color: #c9e2fb; color: var(--blue); }
+.current-booking { padding: 20px; }
+.current-heading .eyebrow, .booking-title small { font-size: 10px; }
+.current-heading h2, .history-heading h2 { color: #24373b; font: 500 23px Georgia, serif; }
+.booking-summary { grid-template-columns: 44px minmax(170px, 1.5fr) repeat(3, minmax(80px, .7fr)); }
+.booking-title h3 { color: #344a49; font-size: 13px; }
+.booking-fact small { font-size: 10px; }
+.booking-fact b { color: #4b5d58; font-size: 11px; }
+.booking-highlight span { color: #344a49; font-size: 12px; }
+.booking-highlight p { color: #687975; font-size: 10px; }
+.booking-bottom { font-size: 11px; }
+.booking-bottom b { color: #24373b; font-size: 13px; }
+.booking-history { padding: 19px 20px 6px; }
+.history-heading .eyebrow { font-size: 10px; }
+.history-heading > span { color: #71818a; font-size: 11px; }
+.booking-history table { min-width: 860px; font-size: 12px; }
+.booking-history th { padding: 12px 10px; color: #51635e; background: var(--light); font-size: 10px; }
+.booking-history td { padding: 12px 10px; color: #536762; font-size: 11px; }
+.booking-history td:first-child b { color: var(--blue); font-size: 11px; }
+.booking-history select { font-size: 11px; }
+.view-booking { border-color: #b9d8f5; color: var(--blue); background: white; font-size: 10px; }
+.package-manager > summary b { color: #344a49; font-size: 14px; }
+.manager-plus { border-color: #c9e2fb; color: var(--blue); }
+.admin-actions .button { font-size: 11px; }
+.admin-section td, .admin-section th { font-size: 11px; }
+
+/* Preserve a comfortable dashboard layout on phones after the shared sizing changes. */
+@media (max-width: 620px) {
+  .admin-workspace { padding: 22px 14px 42px; }
+  .admin-toolbar > h1 { font-size: 29px; }
+  .guest-layout { grid-template-columns: 1fr; }
+  .booking-summary { grid-template-columns: 38px minmax(0, 1fr) 1fr; }
+  .booking-title { grid-column: 2 / 4; }
+  .booking-fact:first-of-type { grid-column: 2; }
+}
+
+/* Personal rewards and saved trips are visible on the admin landing dashboard too. */
+.admin-personal-tools { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 14px; margin: 18px 0 8px; }
+.admin-reward-card, .admin-wishlist-card { min-width: 0; padding: 17px 18px; border: 1px solid #e3e9e6; border-radius: 7px; background: white; }
+.admin-reward-card { border-left: 3px solid var(--blue); background: var(--light); }
+.admin-reward-card .eyebrow, .admin-wishlist-heading .eyebrow { font-size: 9px; letter-spacing: 1.4px; }
+.admin-reward-total { display: flex; align-items: baseline; gap: 7px; margin-top: 5px; color: var(--blue); }
+.admin-reward-total strong { font: 500 31px Georgia, serif; }
+.admin-reward-total span { color: #667975; font-size: 11px; }
+.admin-reward-card > small { color: #4f756b; font-size: 10px; font-weight: 700; }
+.admin-reward-card > p { margin: 8px 0 0; color: #75827e; font-size: 10px; line-height: 1.5; }
+.admin-wishlist-card { display: grid; align-content: start; gap: 12px; }
+.admin-wishlist-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.admin-wishlist-heading h2 { margin: 4px 0 0; color: #24373b; font: 500 22px Georgia, serif; }
+.admin-wishlist-heading h2 small { color: #75827e; font: 400 10px Arial, sans-serif; }
+.admin-wishlist-heading > a { color: var(--blue); font-size: 11px; font-weight: 700; white-space: nowrap; }
+.admin-wishlist-items { display: flex; gap: 9px; overflow-x: auto; padding-bottom: 2px; }
+.admin-favorite-mini { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) 28px; align-items: center; gap: 4px; min-width: 190px; overflow: hidden; border: 1px solid #e5eae5; border-radius: 5px; background: #fff; }
+.admin-favorite-mini > a { display: grid; grid-template-columns: 64px minmax(0, 1fr); align-items: center; gap: 9px; min-width: 0; color: #465b56; font-size: 10px; font-weight: 700; }
+.admin-favorite-mini img { width: 64px; height: 50px; object-fit: cover; }
+.admin-favorite-mini > a span { padding-right: 3px; }
+.admin-favorite-mini > button { width: 24px; height: 24px; padding: 0; border: 0; border-radius: 50%; color: var(--orange); background: #eef7ff; font-size: 12px; }
+.admin-wishlist-empty { margin: 5px 0; color: #71817d; font-size: 11px; }
+@media (max-width: 620px) {
+  .admin-personal-tools { grid-template-columns: 1fr; }
+  .admin-reward-card { display: grid; grid-template-columns: 1fr auto; align-items: center; }
+  .admin-reward-total { grid-column: 2; grid-row: 1 / span 2; }
+  .admin-reward-card > small, .admin-reward-card > p { grid-column: 1 / -1; }
+  .admin-wishlist-heading h2 { font-size: 20px; }
+}
+
+/* Final dashboard polish: clear page title, calm motion, and useful booking filters. */
+.admin-toolbar { gap: 20px; }
+.admin-page-title { flex: 1; }
+.admin-page-title .eyebrow { margin-bottom: 5px; font-size: 9px; }
+.admin-page-title h1 { margin: 0; color: var(--navy); font: 500 32px/1.1 Georgia, serif; }
+.admin-search { width: min(330px, 29vw); }
+.admin-search:focus-within { border-color: var(--blue); box-shadow: 0 0 0 3px #0085fb1c; }
+.admin-personal-tools, .guest-layout, .booking-history, .package-manager { animation: admin-enter .35s ease both; }
+.guest-layout { animation-delay: .04s; }
+.booking-history { animation-delay: .08s; }
+.package-manager { animation-delay: .12s; }
+@keyframes admin-enter { from { opacity: 0; transform: translateY(7px); } to { opacity: 1; transform: translateY(0); } }
+.history-heading { align-items: end; }
+.history-heading h2 { font-size: 24px; }
+.history-heading p { margin: 6px 0 0; color: #71817d; font-size: 11px; }
+.history-tools { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 10px; }
+.booking-filters { display: flex; flex-wrap: wrap; gap: 6px; }
+.booking-filters button { padding: 7px 12px; border: 1px solid #e1e8e3; border-radius: 4px; color: #63736e; background: white; font-size: 10px; font-weight: 700; }
+.booking-filters button:hover { border-color: #a9c5bd; color: var(--blue); }
+.booking-filters button.selected { border-color: var(--blue); color: white; background: var(--blue); }
+.booking-history tbody tr { transition: background .16s ease; }
+.booking-history tbody tr:hover { background: #f8faf8; }
+.booking-history .status-select { min-width: 108px; border-radius: 4px; font-weight: 700; }
+.booking-history .status-select.confirmed { border-color: #c9e1d1; color: #28714e; background: #f1f8f3; }
+.booking-history .status-select.pending { border-color: #f0dfb6; color: #8b681c; background: #fff9e9; }
+.booking-history .status-select.cancelled { border-color: #eed0cd; color: #9d4a43; background: #fcf2f1; }
+.guest-profile, .current-booking, .booking-history, .package-manager, .admin-reward-card, .admin-wishlist-card { box-shadow: 0 5px 20px #193c2809; }
+.admin-favorite-mini { transition: border-color .18s ease, transform .18s ease; }
+.admin-favorite-mini:hover { transform: translateY(-2px); border-color: #b9d8f5; }
+.admin-favorite-mini > button:hover { color: white; background: var(--orange); }
+.status-pill { letter-spacing: .2px; }
+@media (max-width: 850px) {
+  .admin-search { width: auto; }
+}
+@media (max-width: 620px) {
+  .admin-toolbar { align-items: flex-start; }
+  .admin-page-title { flex-basis: 100%; }
+  .admin-page-title h1 { font-size: 28px; }
+  .history-heading { align-items: flex-start; }
+  .history-heading p { max-width: 240px; line-height: 1.5; }
+  .booking-filters { gap: 4px; }
+  .booking-filters button { padding: 7px 9px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .admin-personal-tools, .guest-layout, .booking-history, .package-manager { animation: none; }
+  .admin-favorite-mini, .booking-history tbody tr { transition: none; }
+}
+
+/* Keep booking details readable and give saved trips room to breathe. */
+.booking-highlight { display: grid; grid-template-columns: 105px minmax(0, 1fr); align-items: start; gap: 9px; margin: 12px 0; }
+.booking-highlight > b { padding-top: 5px; color: #344a49; font-size: 11px; }
+.booking-highlight-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.booking-highlight-chips span { max-width: 100%; padding: 6px 8px; border: 1px solid #e3eae5; border-radius: 4px; color: #62736e; background: #f8faf8; font-size: 9px; line-height: 1.35; }
+.admin-wishlist-items { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); overflow: visible; }
+.admin-favorite-mini { min-width: 0; }
+.admin-favorite-mini > a { grid-template-columns: 78px minmax(0, 1fr); font-size: 11px; }
+.admin-favorite-mini img { width: 78px; height: 56px; }
+@media (max-width: 620px) {
+  .booking-highlight { grid-template-columns: 1fr; }
+  .booking-highlight > b { padding: 0; }
+  .admin-wishlist-items { grid-template-columns: 1fr; }
+}

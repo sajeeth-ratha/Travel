@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="/assets/wanderlust-mountain-logo.png">
+  <title>My Account | Wanderlust</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/panel.css">
+</head>
+<body>
+  <header class="top"><a class="logo" href="index.html" aria-label="Wanderlust home"><img src="/assets/wanderlust-mountain-logo.png" alt="Wanderlust"></a><nav><a href="index.html">Home</a><a href="packages.html">Packages</a><a href="bookings.html">My bookings</a><a id="account-link" href="login.html">Login</a></nav></header>
+  <main class="wrap page">
+    <section class="panel-welcome"><div class="eyebrow">MEMBER PANEL</div><h1>Hello, <span id="account-name">traveler</span></h1><p id="account-email" class="muted"></p><button id="logout-button" class="button outline">Log out</button></section>
+    <section class="rewards-card"><div><div class="eyebrow">WANDERLUST REWARDS</div><h2>Your points</h2><p>Earn 1 point for every $10 spent. Each point is worth $0.10 off a future trip.</p></div><div class="rewards-balance"><strong id="member-points">0</strong><span>points</span><small id="member-points-value">$0 available</small></div></section>
+    <section class="panel-bookings"><div class="section-heading"><div><div class="eyebrow">YOUR TRIPS</div><h2>Your bookings</h2></div><a href="packages.html">Find another trip →</a></div><div id="panel-bookings" class="booking-list"></div></section>
+    <section class="panel-favorites"><div class="section-heading"><div><div class="eyebrow">SAVED FOR LATER</div><h2>Your wishlist <small id="favorite-count">(0)</small></h2></div><a href="wishlist.html">Open wishlist →</a></div><div id="member-favorites" class="cards"></div></section>
+  </main>
+  <footer>Wanderlust Travel · Find your next adventure</footer>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

@@ -2,16 +2,76 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%230284c7%22 stroke-width=%222%22><path d=%22M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z%22/></svg>" />
+    <link rel="icon" type="image/png" href="/assets/wanderlust-mountain-logo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Wanderlust | Stays & Travel Packages</title>
-    <!-- Modern clean typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,300..700,0..1,-50..200" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/home.css" />
   </head>
-  <body class="bg-slate-50 text-slate-900 antialiased selection:bg-primary-600 selection:text-white">
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
+  <body>
+    <header class="top">
+      <a class="logo" href="index.html" aria-label="Wanderlust home"><img src="/assets/wanderlust-mountain-logo.png" alt="Wanderlust"></a>
+      <nav><a href="index.html">Home</a><a href="packages.html">Packages</a><a href="bookings.html">My bookings</a><a id="account-link" href="login.html">Login</a></nav>
+    </header>
+    <main>
+      <section class="home-carousel" aria-label="Featured destinations">
+        <article class="hero-slide active" aria-hidden="false">
+          <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=2200&q=90" alt="Colourful homes on the Italian coast">
+          <div class="slide-shade"></div>
+          <div class="slide-copy"><span class="slide-kicker">A SLOWER KIND OF ESCAPE · ITALY</span><h1>Find your place<br>in the sun.</h1><p>Coastal villages, long lunches and views worth taking the longer way for.</p><a class="button gold" href="packages.html?q=Italy">Explore the coast <span>↗</span></a></div>
+        </article>
+        <article class="hero-slide" aria-hidden="true">
+          <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=2200&q=90" alt="Traditional street in Kyoto, Japan">
+          <div class="slide-shade"></div>
+          <div class="slide-copy"><span class="slide-kicker">CULTURE, AT YOUR OWN PACE · JAPAN</span><h1>Take the scenic<br>way through Kyoto.</h1><p>Quiet temple paths, small tea houses and a city that rewards curiosity.</p><a class="button gold" href="packages.html?q=Kyoto">Discover Kyoto <span>↗</span></a></div>
+        </article>
+        <article class="hero-slide" aria-hidden="true">
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2200&q=90" alt="Turquoise water beside a tropical beach">
+          <div class="slide-shade"></div>
+          <div class="slide-copy"><span class="slide-kicker">A LITTLE MORE BLUE · THE ISLANDS</span><h1>Let the days<br>open up.</h1><p>Warm water, open skies and room to make the trip your own.</p><a class="button gold" href="packages.html?q=Beach">See island trips <span>↗</span></a></div>
+        </article>
+        <button class="slide-arrow previous" id="previous-slide" aria-label="Previous slide">←</button>
+        <button class="slide-arrow next" id="next-slide" aria-label="Next slide">→</button>
+        <div class="slide-footer"><span id="slide-number">01 / 03</span><div class="slide-dots" aria-label="Choose a slide"><button class="active" data-slide="0" aria-label="Show slide 1"></button><button data-slide="1" aria-label="Show slide 2"></button><button data-slide="2" aria-label="Show slide 3"></button></div></div>
+      </section>
+      <section class="home-search-wrap"><div class="search-box"><div class="search-heading"><div><div class="eyebrow">YOUR NEXT STAY STARTS HERE</div><h2>Where to?</h2></div><span>Thoughtfully planned trips, made easy.</span></div><div class="search-fields">
+        <label>Destination<input id="destination-search" placeholder="City, country, or experience"></label>
+        <label>Check-in<input type="date" id="check-in"></label>
+        <label>Check-out<input type="date" id="check-out"></label>
+        <label>Guests<select id="guest-count"><option>1 guest</option><option selected>2 guests</option><option>3 guests</option><option>4 guests</option></select></label>
+        <button class="button" id="search-button">Search stays <span>→</span></button>
+      </div></div></section>
+      <section class="wrap home-discovery">
+        <div class="section-heading discovery-heading"><div><div class="eyebrow">A GOOD PLACE TO BEGIN</div><h2>Choose your kind of trip</h2><p>Start with the feeling you’re after, or pick a part of the world.</p></div></div>
+        <div class="category-options" id="category-options"></div>
+        <div class="discovery-divider"></div>
+        <div class="region-heading"><div><div class="eyebrow">GO A LITTLE FURTHER</div><h3>Explore by region</h3></div><a href="packages.html">All destinations →</a></div>
+        <div class="region-options" id="region-options"></div>
+        <div class="popular-heading"><div><div class="eyebrow">TRAVELER FAVORITES</div><h3>Popular places</h3></div></div>
+        <div class="destination-options" id="destination-options"></div>
+      </section>
+      <section class="wrap home-featured">
+        <div class="section-heading"><div><div class="eyebrow">HAND PICKED FOR YOU</div><h2>Popular journeys</h2></div><a href="packages.html">See all trips →</a></div>
+        <div class="cards" id="featured-trips"></div>
+        <section class="discount-banner" data-home-reveal aria-labelledby="discount-title">
+          <img class="discount-photo" src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1200&q=85" alt="A sunny resort pool surrounded by palm trees" loading="lazy">
+          <div class="discount-copy"><div class="eyebrow">A LITTLE SOMETHING FOR YOUR NEXT TRIP</div><h2 id="discount-title">Make your next getaway a little sweeter.</h2><p>Take 10% off your trip with this welcome offer.</p>
+            <div class="discount-code"><span>WELCOME10</span><small>Enter this code at checkout</small></div>
+            <a class="button" href="packages.html">Browse trips <span>→</span></a>
+          </div>
+          <div class="discount-stamp" aria-label="10 percent off"><b>10%</b><span>OFF</span></div>
+        </section>
+        <section class="about"><div><div class="eyebrow">TRAVEL WITH EASE</div><h2>Your trip, thoughtfully planned.</h2></div><p>Browse a hand-picked collection of places, choose the trip that suits you and keep your booking details in one place. No real payment is taken.</p></section>
+        <section class="home-story" data-home-reveal>
+          <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1200&q=85" alt="Bali rice terraces and tropical greenery" loading="lazy">
+          <div class="story-copy"><div class="eyebrow">A BETTER WAY TO GET AWAY</div><h2>Good trips leave room for a little surprise.</h2><p>We bring the stays, local highlights, and practical details together, so you can spend less time planning and more time looking forward to the journey.</p><a href="packages.html" class="story-link">Find a trip that fits you <span>→</span></a></div>
+        </section>
+      </section>
+    </main>
+    <footer>Wanderlust Travel · Find your next adventure</footer>
+    <script type="module" src="/app.js"></script>
   </body>
 </html>

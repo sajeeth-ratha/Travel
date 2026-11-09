@@ -1,0 +1,4 @@
+/* PACKAGES PAGE: space above the trip card grid. */
+.page > .cards { margin-top: 25px; }
+/* Light background helps visitors notice the trip search field. */
+.catalog-search input { background: #f8faf9; }

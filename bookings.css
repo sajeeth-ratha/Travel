@@ -1,0 +1,19 @@
+/* Bookings page: keep the cancellation rule visible above the reservation list. */
+.cancellation-policy { max-width: 720px; margin: 18px 0 0; padding: 13px 16px; border-left: 3px solid var(--blue); color: #5f736e; background: var(--light); font-size: 12px; line-height: 1.6; }
+.booking-list { margin-top: 20px; }
+.managed-booking { grid-template-columns: minmax(0, 1fr) 135px 215px; background: white; box-shadow: 0 3px 14px #193c2808; }
+.managed-booking h3 { color: #293d3a; font: 500 20px Georgia, serif; }
+.booking-cancel-area { display: grid; justify-items: end; gap: 6px; }
+.booking-cancel-area small { color: #71817d; font-size: 10px; text-align: right; }
+.booking-cancel-area .cancel-closed { color: #a45a40; }
+.booking-cancel-area .button { padding: 8px 12px; }
+
+/* On smaller screens, show each booking's cancel rule beneath its details. */
+@media (max-width: 780px) {
+  .managed-booking { grid-template-columns: 1fr 120px; }
+  .booking-cancel-area { grid-column: 1 / -1; justify-items: start; }
+  .booking-cancel-area small { text-align: left; }
+}
+@media (max-width: 520px) {
+  .managed-booking { grid-template-columns: 1fr; }
+}
