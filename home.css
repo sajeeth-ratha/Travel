@@ -21,12 +21,10 @@
 .hero-slide.active { opacity: 1; visibility: visible; }
 .hero-slide > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 
-/* Dark gradient sits over the photo so the white headline stays easy to read. */
 .slide-shade {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(11, 25, 29, .76) 0%, rgba(11, 25, 29, .42) 48%, rgba(11, 25, 29, .04) 100%),
-    linear-gradient(0deg, rgba(11, 25, 29, .36), transparent 42%);
+  background-color: rgba(7, 43, 75, 0.65);
 }
 
 /* Main text and link shown on each destination slide. */
@@ -102,6 +100,13 @@
 .home-search-wrap .button { height: 51px; min-height: 51px; padding: 0 19px; white-space: nowrap; background: var(--blue); }
 .home-search-wrap .button span { margin-left: 8px; }
 
+/* A clear route to room-only stays for visitors who do not want a package. */
+.standalone-stay-link { display: flex; align-items: center; justify-content: space-between; gap: 25px; margin-top: 28px; padding: 22px 25px; border: 1px solid #dceafa; border-radius: 7px; background: #f5faff; }
+.standalone-stay-link h2 { margin: 6px 0; color: #173c60; font: 500 25px Georgia, serif; }
+.standalone-stay-link p { margin: 0; color: #667984; font-size: 13px; line-height: 1.6; }
+.standalone-stay-link .button { flex: 0 0 auto; }
+@media (max-width: 620px) { .standalone-stay-link { align-items: flex-start; flex-direction: column; } }
+
 /* Spacing and polish for the featured trips below the search. */
 .home-featured { padding-top: 17px; }
 .home-featured .section-heading { margin-top: 54px; }
@@ -132,7 +137,7 @@
 .category-option > img { position: absolute; z-index: -2; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .65s cubic-bezier(.2,.7,.2,1); }
 .category-option:hover { transform: translateY(-4px); box-shadow: 0 14px 28px rgba(23, 50, 41, .18); }
 .category-option:hover > img { transform: scale(1.06); }
-.category-shade { position: absolute; z-index: -1; inset: 0; background: linear-gradient(180deg, rgba(15,26,28,.2), rgba(15,26,28,.18) 35%, rgba(15,26,28,.82)); }
+.category-shade { position: absolute; z-index: -1; inset: 0; background-color: rgba(7, 43, 75, 0.65); }
 .option-icon { color: #f1d3a6; font-size: 25px; }
 .option-copy { display: grid; gap: 6px; }
 .option-copy b { color: white; font: 500 17px Georgia, serif; }
@@ -146,7 +151,7 @@
 .region-options { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
 .region-option { position: relative; isolation: isolate; min-height: 224px; overflow: hidden; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end; gap: 7px; padding: 20px; border-radius: 8px; color: white; background: #31434a; box-shadow: 0 5px 18px rgba(23, 50, 41, .08); }
 .region-option > img { position: absolute; z-index: -2; inset: 0; width: 100%; height: 100%; object-fit: cover; animation: region-photo-drift 16s ease-in-out var(--region-delay, 0s) infinite alternate; transition: transform .7s ease; }
-.region-shade { position: absolute; z-index: -1; inset: 0; background: linear-gradient(0deg, rgba(12, 26, 30, .8), rgba(12, 26, 30, .08) 82%); }
+.region-shade { position: absolute; z-index: -1; inset: 0; background-color: rgba(7, 43, 75, 0.65); }
 .region-option .region-symbol { margin-bottom: auto; color: #f1d3a6; font-size: 25px; }
 .region-copy { display: grid; gap: 5px; }
 .region-option b { color: white; font: 500 24px Georgia, serif; }
@@ -157,14 +162,15 @@
 @keyframes region-photo-drift { from { transform: scale(1.02); } to { transform: scale(1.09); } }
 .popular-heading { margin-top: 42px; }
 .destination-options { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
-.destination-option { min-height: 205px; display: flex; flex-direction: column; justify-content: end; gap: 5px; padding: 18px; border-radius: 7px; color: white; background-image: linear-gradient(0deg, rgba(10, 28, 32, .78), rgba(10, 28, 32, 0) 75%), var(--destination-image); background-position: center; background-size: cover; transition: transform .18s ease; }
+.destination-option { position: relative; min-height: 205px; overflow: hidden; display: flex; flex-direction: column; justify-content: end; gap: 5px; padding: 18px; border-radius: 7px; color: white; background-image: var(--destination-image); background-position: center; background-size: cover; transition: transform .18s ease; }
+.destination-option::before { content: ""; position: absolute; inset: 0; background-color: rgba(7, 43, 75, 0.6); z-index: 0; }
+.destination-option > * { position: relative; z-index: 1; }
 .destination-option:hover { transform: translateY(-3px); }
 .destination-option > span { color: #f1d3a6; font-size: 10px; letter-spacing: 1.6px; text-transform: uppercase; }
 .destination-option b { font: 500 23px Georgia, serif; }
 .destination-option small { color: #f3f3ed; font-size: 11px; }
 
 /* Google Material Symbols used on the homepage browse cards. */
-.material-symbols-outlined { font-family: 'Material Symbols Outlined'; font-weight: normal; font-style: normal; line-height: 1; letter-spacing: normal; text-transform: none; white-space: nowrap; word-wrap: normal; direction: ltr; font-feature-settings: 'liga'; -webkit-font-feature-settings: 'liga'; -webkit-font-smoothing: antialiased; }
 
 /* A short editorial pause between destination browsing and featured trips. */
 .home-story { display: grid; grid-template-columns: 1.05fr .95fr; min-height: 330px; overflow: hidden; margin: 54px 0 12px; border-radius: 8px; background: #f4f1e9; }
@@ -197,7 +203,7 @@
 }
 @media (max-width: 520px) {
   .home-carousel { min-height: 560px; height: 82vh; max-height: 690px; }
-  .slide-shade { background: linear-gradient(90deg, rgba(11,25,29,.72), rgba(11,25,29,.18)), linear-gradient(0deg, rgba(11,25,29,.48), transparent 65%); }
+  .slide-shade { background-color: rgba(7, 43, 75, 0.72); }
   .slide-copy { width: 78%; margin-left: 11%; padding-bottom: 18px; }
   .slide-copy h1 { font-size: 49px; }
   .slide-copy p { font-size: 14px; }

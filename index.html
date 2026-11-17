@@ -14,7 +14,8 @@
   <body>
     <header class="top">
       <a class="logo" href="index.html" aria-label="Wanderlust home"><img src="/assets/wanderlust-mountain-logo.png" alt="Wanderlust"></a>
-      <nav><a href="index.html">Home</a><a href="packages.html">Packages</a><a href="bookings.html">My bookings</a><a id="account-link" href="login.html">Login</a></nav>
+      <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="primary-navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+      <nav id="primary-navigation" class="site-nav" aria-label="Main navigation"><a href="index.html">Home</a><a href="rooms.html">Stays</a><a href="packages.html">Trips</a><a id="account-link" href="login.html">Login</a></nav>
     </header>
     <main>
       <section class="home-carousel" aria-label="Featured destinations">
@@ -44,6 +45,7 @@
         <label>Guests<select id="guest-count"><option>1 guest</option><option selected>2 guests</option><option>3 guests</option><option>4 guests</option></select></label>
         <button class="button" id="search-button">Search stays <span>→</span></button>
       </div></div></section>
+      <section class="standalone-stay-link wrap"><div><div class="eyebrow">JUST LOOKING FOR A PLACE TO STAY?</div><h2>Book a room by itself.</h2><p>Choose a hotel room or villa, pick your dates, and book without adding a travel package.</p></div><a class="button" href="rooms.html">Explore rooms <span>→</span></a></section>
       <section class="wrap home-discovery">
         <div class="section-heading discovery-heading"><div><div class="eyebrow">A GOOD PLACE TO BEGIN</div><h2>Choose your kind of trip</h2><p>Start with the feeling you’re after, or pick a part of the world.</p></div></div>
         <div class="category-options" id="category-options"></div>
@@ -71,7 +73,13 @@
         </section>
       </section>
     </main>
-    <footer>Wanderlust Travel · Find your next adventure</footer>
+    <footer class="site-footer">
+    <div class="footer-inner wrap">
+      <div class="footer-brand"><a class="footer-logo" href="index.html">Wanderlust</a><p>Thoughtful places and trips, all in one place.</p></div>
+      <nav class="footer-links" aria-label="Footer navigation"><a href="rooms.html">Find a stay</a><a href="packages.html">Explore trips</a><a href="bookings.html">My bookings</a><a href="panel.html">My account</a></nav>
+    </div>
+    <div class="footer-bottom"><span>© 2026 Wanderlust Travel</span><span>Travel well. Keep the good memories.</span></div>
+  </footer>
     <script type="module" src="/app.js"></script>
   </body>
 </html>

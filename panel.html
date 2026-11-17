@@ -9,14 +9,416 @@
   <link rel="stylesheet" href="/panel.css">
 </head>
 <body>
-  <header class="top"><a class="logo" href="index.html" aria-label="Wanderlust home"><img src="/assets/wanderlust-mountain-logo.png" alt="Wanderlust"></a><nav><a href="index.html">Home</a><a href="packages.html">Packages</a><a href="bookings.html">My bookings</a><a id="account-link" href="login.html">Login</a></nav></header>
-  <main class="wrap page">
-    <section class="panel-welcome"><div class="eyebrow">MEMBER PANEL</div><h1>Hello, <span id="account-name">traveler</span></h1><p id="account-email" class="muted"></p><button id="logout-button" class="button outline">Log out</button></section>
-    <section class="rewards-card"><div><div class="eyebrow">WANDERLUST REWARDS</div><h2>Your points</h2><p>Earn 1 point for every $10 spent. Each point is worth $0.10 off a future trip.</p></div><div class="rewards-balance"><strong id="member-points">0</strong><span>points</span><small id="member-points-value">$0 available</small></div></section>
-    <section class="panel-bookings"><div class="section-heading"><div><div class="eyebrow">YOUR TRIPS</div><h2>Your bookings</h2></div><a href="packages.html">Find another trip →</a></div><div id="panel-bookings" class="booking-list"></div></section>
-    <section class="panel-favorites"><div class="section-heading"><div><div class="eyebrow">SAVED FOR LATER</div><h2>Your wishlist <small id="favorite-count">(0)</small></h2></div><a href="wishlist.html">Open wishlist →</a></div><div id="member-favorites" class="cards"></div></section>
+  <header class="top">
+    <a class="logo" href="index.html" aria-label="Wanderlust home">
+      <img src="/assets/wanderlust-mountain-logo.png" alt="Wanderlust">
+    </a>
+      <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="primary-navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+      <nav id="primary-navigation" class="site-nav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="rooms.html">Stays</a>
+      <a href="packages.html">Trips</a>
+
+      <a id="account-link" class="active" href="panel.html">Account</a>
+    </nav>
+  </header>
+
+  <main class="wrap page account-dashboard">
+    <!-- Member Identity Hero Card -->
+    <section class="panel-hero" aria-label="Member profile banner">
+      <div class="panel-hero-copy">
+        <span class="eyebrow">YOUR TRAVEL, ALL IN ONE PLACE</span>
+        <p>Good to see you again</p>
+      </div>
+      <div class="panel-hero-profile">
+        <div class="profile-avatar" id="profile-avatar">T</div>
+        <div class="panel-hero-info">
+          <div class="member-badge-row">
+            <span class="member-tier-pill">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Wanderlust Rewards · Silver Member</span>
+            </span>
+            <span class="member-id-pill" id="member-id-tag" title="Click to copy your Member ID">
+              <span class="id-label">Member ID:</span>
+              <strong id="member-id-text">#WL-2026</strong>
+              <button type="button" class="copy-id-btn" id="copy-member-id-btn" aria-label="Copy member ID">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              </button>
+              <span class="copied-tooltip" id="copy-id-feedback" role="status" aria-live="polite"></span>
+            </span>
+          </div>
+
+          <h1 id="account-name">Traveler</h1>
+
+          <div class="panel-hero-meta">
+            <span class="meta-item">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              <span id="account-email">traveler@example.com</span>
+            </span>
+            <span class="meta-item">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              <span id="profile-phone">No phone saved</span>
+            </span>
+            <span class="meta-item member-since-tag">
+              Member since 2026
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel-hero-actions">
+        <button id="open-profile-dialog" class="button outline small" type="button">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+          Edit Profile
+        </button>
+        <button id="logout-button" class="button small text-action" type="button">
+          Log out
+        </button>
+      </div>
+
+      <!-- Hidden elements preserved for legacy DOM compatibility -->
+      <span id="profile-name" style="display:none;"></span>
+      <span id="profile-email" style="display:none;"></span>
+    </section>
+
+    <div class="account-layout">
+    <!-- Account navigation -->
+    <nav class="panel-subnav" id="panel-subnav" aria-label="Account sections">
+      <button type="button" class="subnav-pill active" data-panel-tab="overview">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+        Overview
+      </button>
+      <button type="button" class="subnav-pill" data-panel-tab="bookings">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+        My Bookings <span class="tab-badge" id="bookings-tab-badge">0</span>
+      </button>
+      <button type="button" class="subnav-pill" data-panel-tab="rewards">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+        Wanderlust Rewards
+      </button>
+      <button type="button" class="subnav-pill" data-panel-tab="wishlist">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+        Saved Wishlist <span class="tab-badge" id="wishlist-tab-badge">0</span>
+      </button>
+      <button type="button" class="subnav-pill" data-panel-tab="security">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+        Security & Settings
+      </button>
+    </nav>
+
+    <div class="account-content">
+    <!-- SECTION 1: Account Overview & Key Stats -->
+    <div id="section-overview" class="panel-section">
+      <div class="overview-heading">
+        <div>
+          <span class="eyebrow">A LITTLE MORE TIME AWAY</span>
+          <h2>Your travel at a glance</h2>
+          <p>Keep your upcoming stays, rewards and favorite places close at hand.</p>
+        </div>
+        <a href="rooms.html" class="button">Find your next stay <span aria-hidden="true">→</span></a>
+      </div>
+      <section class="account-stats" aria-label="Account overview statistics">
+        <article class="account-stat">
+          <div class="stat-icon stat-blue">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+          </div>
+          <div class="stat-content">
+            <small>UPCOMING TRIPS</small>
+            <strong id="upcoming-count">0</strong>
+            <span>ready for departure</span>
+          </div>
+        </article>
+
+        <article class="account-stat">
+          <div class="stat-icon stat-amber">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          </div>
+          <div class="stat-content">
+            <small>REWARD POINTS</small>
+            <strong id="member-points-short">0</strong>
+            <span id="member-points-value-short">$0 available to use</span>
+          </div>
+        </article>
+
+        <article class="account-stat">
+          <div class="stat-icon stat-rose">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+          </div>
+          <div class="stat-content">
+            <small>SAVED PLACES</small>
+            <strong id="saved-count">0</strong>
+            <span>in your wishlist</span>
+          </div>
+        </article>
+
+        <article class="account-stat">
+          <div class="stat-icon stat-emerald">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+          </div>
+          <div class="stat-content">
+            <small>LIFETIME SAVINGS</small>
+            <strong id="lifetime-savings">$0</strong>
+            <span>saved with promos & rewards</span>
+          </div>
+        </article>
+      </section>
+    </div>
+
+    <!-- SECTION 2: Wanderlust Rewards Card -->
+    <div id="section-rewards" class="panel-section">
+      <section class="rewards-card" aria-label="Wanderlust rewards and loyalty program">
+        <div class="reward-main">
+          <div class="eyebrow">ONEKEY REWARDS & VIP PERKS</div>
+          <h2>Unlock travel savings on every reservation.</h2>
+          <p>Earn 1 point for every $10 spent across hotels and tour packages. Every 10 points equals $1.00 instant discount at checkout.</p>
+
+          <!-- Milestone progress bar -->
+          <div class="rewards-progress-card">
+            <div class="progress-info">
+              <span>Next reward milestone: <b>$50 Travel Credit</b> (500 pts)</span>
+              <span id="rewards-progress-label">0 / 500 points</span>
+            </div>
+            <div class="progress-track" aria-hidden="true">
+              <div class="progress-fill" id="rewards-progress-fill" style="width: 0%;"></div>
+            </div>
+          </div>
+
+          <div class="rewards-perks-row">
+            <div class="perk-pill">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Member-Only Rates (Up to 15% off)</span>
+            </div>
+            <div class="perk-pill">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Free Cancellation on Select Stays</span>
+            </div>
+            <div class="perk-pill">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Instant Redemption at Checkout</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="rewards-balance-box">
+          <span class="balance-title">AVAILABLE POINTS</span>
+          <strong id="member-points">0</strong>
+          <span class="balance-pts">points</span>
+          <div class="balance-cash-badge" id="member-points-value">$0 available</div>
+          <a class="button small" href="rooms.html">Browse Stays & Earn</a>
+        </div>
+      </section>
+    </div>
+
+    <!-- SECTION 3: Bookings & Stays Management -->
+    <div id="section-bookings" class="panel-section">
+      <section class="panel-bookings" aria-label="Your bookings and reservations">
+        <div class="section-heading">
+          <div>
+            <div class="eyebrow">YOUR TRAVEL PLANS</div>
+            <h2>Bookings & Stays</h2>
+            <p>Access your reservations, manage lead traveler details, download official vouchers, or cancel if needed.</p>
+          </div>
+          <a href="packages.html" class="browse-link">
+            Explore packages
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+        </div>
+
+        <!-- Filter tabs -->
+        <div class="booking-history-tabs" id="member-booking-tabs" role="group" aria-label="Filter booking history">
+          <button type="button" class="selected" data-member-filter="All">All bookings</button>
+          <button type="button" data-member-filter="Upcoming">Upcoming</button>
+          <button type="button" data-member-filter="Past">Past trips</button>
+          <button type="button" data-member-filter="Cancelled">Cancelled</button>
+        </div>
+
+        <div id="panel-bookings" class="booking-list"></div>
+      </section>
+    </div>
+
+    <!-- SECTION 4: Saved Wishlist -->
+    <div id="section-wishlist" class="panel-section">
+      <section class="panel-favorites" aria-label="Saved places and trips">
+        <div class="section-heading">
+          <div>
+            <div class="eyebrow">SAVED FOR LATER</div>
+            <h2>Your Wishlist <small id="favorite-count">(0)</small></h2>
+            <p>Destinations and hotel rooms you have bookmarked for your upcoming adventures.</p>
+          </div>
+          <a href="wishlist.html" class="browse-link">
+            Full wishlist
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+        </div>
+        <div id="member-favorites" class="cards"></div>
+      </section>
+    </div>
+
+    <!-- SECTION 5: Security & Account Settings -->
+    <div id="section-security" class="panel-section">
+      <section class="panel-security" aria-label="Security and account settings">
+        <div class="section-heading">
+          <div>
+            <div class="eyebrow">PROFILE & SECURITY</div>
+            <h2>Account Settings</h2>
+            <p>Update your personal details, verified phone number, and password anytime.</p>
+          </div>
+        </div>
+
+        <div class="settings-grid">
+          <!-- Profile Information Card -->
+          <article class="settings-card">
+            <div class="settings-card-header">
+              <div class="settings-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+              </div>
+              <div>
+                <h3>Personal Information</h3>
+                <p>Used to automatically populate lead traveler information during booking.</p>
+              </div>
+            </div>
+
+            <form id="settings-profile-form" class="settings-form">
+              <label>
+                Full Name
+                <input name="name" id="settings-name-input" required autocomplete="name">
+              </label>
+              <label>
+                Email Address
+                <input name="email" id="settings-email-input" type="email" required autocomplete="email">
+              </label>
+              <label>
+                Phone Number
+                <input name="phone" id="settings-phone-input" type="tel" autocomplete="tel" placeholder="+1 (555) 0144">
+              </label>
+              <div class="settings-action-row">
+                <button type="submit" class="button small">Save Profile Details</button>
+                <span class="settings-status" id="settings-profile-status" aria-live="polite"></span>
+              </div>
+            </form>
+          </article>
+
+          <!-- Security & Password Card -->
+          <article class="settings-card">
+            <div class="settings-card-header">
+              <div class="settings-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              </div>
+              <div>
+                <h3>Change Password</h3>
+                <p>Ensure your account is protected with a secure password (at least 6 characters).</p>
+              </div>
+            </div>
+
+            <form id="settings-password-form" class="settings-form">
+              <label>
+                New Password
+                <div class="password-input-wrap">
+                  <input name="newPassword" id="settings-password-input" type="password" minlength="6" required autocomplete="new-password" placeholder="At least 6 characters">
+                  <button type="button" class="toggle-password" id="toggle-settings-password" aria-label="Toggle password visibility">
+                    <svg class="eye-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                  </button>
+                </div>
+              </label>
+              <label>
+                Confirm New Password
+                <input name="confirmPassword" id="settings-password-confirm" type="password" minlength="6" required autocomplete="new-password" placeholder="Re-enter new password">
+              </label>
+              <div class="settings-action-row">
+                <button type="submit" class="button small outline">Update Password</button>
+                <span class="settings-status" id="settings-password-status" aria-live="polite"></span>
+              </div>
+            </form>
+          </article>
+        </div>
+      </section>
+    </div>
+    </div>
+    </div>
   </main>
-  <footer>Wanderlust Travel · Find your next adventure</footer>
+
+  <!-- Edit Profile Modal Dialog -->
+  <dialog class="account-dialog" id="profile-dialog" aria-labelledby="profile-dialog-title">
+    <button class="dialog-close" id="close-profile-dialog" type="button" aria-label="Close profile editor">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+    <div class="eyebrow">ACCOUNT DETAILS</div>
+    <h2 id="profile-dialog-title">Edit Your Profile</h2>
+    <p class="dialog-intro">Keep your contact details up to date for effortless bookings and notifications.</p>
+
+    <form id="profile-form">
+      <label>
+        Full name
+        <input name="name" id="profile-name-input" required autocomplete="name">
+      </label>
+      <label>
+        Email address
+        <input name="email" id="profile-email-input" type="email" required autocomplete="email">
+      </label>
+      <label>
+        Phone number
+        <input name="phone" id="profile-phone-input" type="tel" autocomplete="tel" placeholder="+1 (555) 0144">
+      </label>
+      <label>
+        Change password (optional)
+        <div class="password-input-wrap">
+          <input name="password" id="profile-password-input" type="password" minlength="6" autocomplete="new-password" placeholder="Leave blank to keep current password">
+          <button type="button" class="toggle-password" id="toggle-dialog-password" aria-label="Toggle password visibility">
+            <svg class="eye-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+          </button>
+        </div>
+      </label>
+      <p class="profile-message" id="profile-message" aria-live="polite"></p>
+      <div class="dialog-actions">
+        <button class="button outline" id="cancel-profile-edit" type="button">Cancel</button>
+        <button class="button" type="submit">Save Profile</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Edit Booking Guest Details Modal Dialog -->
+  <dialog class="account-dialog booking-edit-dialog" id="booking-edit-dialog" aria-labelledby="booking-edit-title">
+    <button class="dialog-close" id="close-booking-dialog" type="button" aria-label="Close booking editor">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+    <div class="eyebrow">MANAGE YOUR BOOKING</div>
+    <h2 id="booking-edit-title">Update Guest Details</h2>
+    <p class="dialog-intro" id="booking-edit-summary"></p>
+
+    <form id="booking-edit-form">
+      <input type="hidden" name="bookingId">
+      <label>
+        Lead guest name
+        <input name="customerName" required>
+      </label>
+      <label>
+        Contact email
+        <input name="customerEmail" type="email" required>
+      </label>
+      <label>
+        Phone number
+        <input name="customerPhone" type="tel" placeholder="+1 (555) 0144">
+      </label>
+      <label>
+        Special requests
+        <textarea name="specialRequests" rows="3" placeholder="e.g. Quiet room, ground floor, late check-in notice"></textarea>
+      </label>
+      <p class="profile-message" id="booking-edit-message" aria-live="polite"></p>
+      <div class="dialog-actions">
+        <button class="button outline" id="cancel-booking-edit" type="button">Close</button>
+        <button class="button" type="submit">Save Changes</button>
+      </div>
+    </form>
+  </dialog>
+
+  <footer class="site-footer">
+    <div class="footer-inner wrap">
+      <div class="footer-brand"><a class="footer-logo" href="index.html">Wanderlust</a><p>Thoughtful places and trips, all in one place.</p></div>
+      <nav class="footer-links" aria-label="Footer navigation"><a href="rooms.html">Find a stay</a><a href="packages.html">Explore trips</a><a href="bookings.html">My bookings</a><a href="panel.html">My account</a></nav>
+    </div>
+    <div class="footer-bottom"><span>© 2026 Wanderlust Travel</span><span>Travel well. Keep the good memories.</span></div>
+  </footer>
+
   <script type="module" src="/app.js"></script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 /* Admin workspace: a pale background separates the dashboard from public pages. */
 .admin-workspace { min-height: calc(100vh - 140px); padding: 25px max(calc((100% - 1240px) / 2), 24px) 58px; background: #f5faff; }
 .admin-toolbar { display: flex; align-items: center; gap: 19px; }
-.admin-toolbar > h1 { flex: 1; margin: 0; color: #27323a; font: 700 22px Arial, sans-serif; }
+.admin-toolbar > h1 { flex: 1; margin: 0; color: #27323a; font: 700 22px 'DM Sans', sans-serif; }
 .admin-search { display: flex; align-items: center; gap: 8px; width: min(310px, 30vw); padding: 0 12px; border: 1px solid #dceeff; border-radius: 22px; background: white; }
 .admin-search .search-icon { color: var(--blue); font-size: 23px; line-height: 1; }
 .admin-search input { min-width: 0; padding: 10px 0; border: 0; outline: 0; background: transparent; font-size: 11px; }
@@ -188,7 +188,7 @@
 .admin-wishlist-card { display: grid; align-content: start; gap: 12px; }
 .admin-wishlist-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .admin-wishlist-heading h2 { margin: 4px 0 0; color: #24373b; font: 500 22px Georgia, serif; }
-.admin-wishlist-heading h2 small { color: #75827e; font: 400 10px Arial, sans-serif; }
+.admin-wishlist-heading h2 small { color: #75827e; font: 400 10px 'DM Sans', sans-serif; }
 .admin-wishlist-heading > a { color: var(--blue); font-size: 11px; font-weight: 700; white-space: nowrap; }
 .admin-wishlist-items { display: flex; gap: 9px; overflow-x: auto; padding-bottom: 2px; }
 .admin-favorite-mini { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) 28px; align-items: center; gap: 4px; min-width: 190px; overflow: hidden; border: 1px solid #e5eae5; border-radius: 5px; background: #fff; }
@@ -266,4 +266,28 @@
   .booking-highlight { grid-template-columns: 1fr; }
   .booking-highlight > b { padding: 0; }
   .admin-wishlist-items { grid-template-columns: 1fr; }
+}
+
+/* Sidebar links jump straight to the booking, package, and room controls. */
+.admin-dashboard-grid { display: grid; grid-template-columns: 165px minmax(0, 1fr); align-items: start; gap: 24px; }
+.admin-side-menu { position: sticky; top: 18px; display: grid; gap: 5px; padding: 14px 9px; border: 1px solid #e3eaf2; border-radius: 7px; background: #f8fbff; }
+.admin-side-label { padding: 5px 10px 8px; color: #8092a0; font-size: 9px; font-weight: 700; letter-spacing: 1.3px; }
+.admin-side-menu a { padding: 10px; border-radius: 4px; color: #435c70; font-size: 11px; font-weight: 700; }
+.admin-side-menu a:hover { color: var(--blue); background: #eaf4ff; }
+.admin-main-column { min-width: 0; }
+.admin-main-column > .admin-toolbar { scroll-margin-top: 20px; }
+.admin-main-column > .booking-history, .admin-main-column > .package-manager { scroll-margin-top: 18px; }
+.room-manager { margin-top: 14px; }
+.room-manager table { min-width: 960px; }
+.admin-section td button { margin-right: 5px; }
+@media (max-width: 900px) {
+  .admin-dashboard-grid { grid-template-columns: 1fr; gap: 12px; }
+  .admin-side-menu { position: static; display: flex; flex-wrap: wrap; align-items: center; padding: 7px; }
+  .admin-side-label { padding: 5px 8px; }
+  .admin-side-menu a { padding: 8px; }
+}
+@media (max-width: 620px) {
+  .admin-side-menu { gap: 2px; }
+  .admin-side-label { width: 100%; }
+  .admin-side-menu a { padding: 7px 8px; font-size: 10px; }
 }

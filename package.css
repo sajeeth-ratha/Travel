@@ -14,8 +14,7 @@
 .gallery-photo { position: relative; min-width: 0; overflow: hidden; padding: 0; border: 0; background: #e8ece8; cursor: pointer; }
 .gallery-photo img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .45s ease; }
 .gallery-photo:hover img { transform: scale(1.04); }
-.gallery-main { grid-row: span 1; }
-.gallery-last::after { position: absolute; inset: 0; content: ""; background: linear-gradient(transparent 55%, #14292565); pointer-events: none; }
+.gallery-last::after { display: none; }
 .gallery-all { position: absolute; z-index: 1; right: 14px; bottom: 14px; padding: 9px 12px; border: 1px solid #ffffffb5; border-radius: 4px; color: #263b38; background: white; font-size: 11px; font-weight: 700; }
 
 /* Main detail content: trip information on the left and a booking card on the right. */
@@ -111,4 +110,36 @@
   .photo-dialog { padding: 44px 10px 16px; }
   .photo-viewer { grid-template-columns: 32px 1fr 32px; gap: 4px; }
   .photo-arrow { width: 30px; height: 30px; }
+}
+
+/* A more balanced destination collage for package details. */
+.detail-gallery { height: 430px; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); grid-template-rows: repeat(2, minmax(0, 1fr)); gap: 10px; border-radius: 12px; }
+.detail-gallery .gallery-photo { min-height: 0; border-radius: 8px; }
+.detail-gallery .gallery-main { grid-row: 1 / span 2; }
+.detail-gallery .gallery-photo img { object-position: center; }
+.detail-heading { margin-bottom: 22px; }
+.detail-heading h1 { max-width: 100%; font: 700 clamp(32px, 3.5vw, 44px)/1.12 var(--heading-font); letter-spacing: -.035em; }
+.detail-content-grid { grid-template-columns: minmax(0, 1fr) minmax(290px, 330px); gap: clamp(32px, 5vw, 66px); margin-top: 34px; }
+.detail-booking-box { padding: 23px; border-color: #dce5ed; border-radius: 12px; box-shadow: 0 12px 34px #17372b12; }
+.detail-booking-box > .button { border-radius: 6px; background: var(--navy); }
+.detail-booking-box > .button:hover { background: var(--blue); }
+.detail-overview > p { font-size: 14px; }
+.itinerary-section { margin-top: 50px; }
+.included-section { border: 1px solid #e5ecef; border-radius: 12px; background: #f5f9fc; }
+
+@media (max-width: 800px) {
+  .detail-gallery { height: 350px; }
+}
+@media (max-width: 520px) {
+  .detail-heading h1 { font-size: clamp(30px, 8vw, 36px); }
+  .detail-gallery { height: 315px; grid-template-columns: 1fr 1fr; grid-template-rows: 215px 94px; gap: 6px; }
+  .detail-gallery .gallery-main { grid-column: 1 / -1; grid-row: 1; }
+  .detail-gallery .gallery-photo { border-radius: 6px; }
+}
+
+/* Keep the gallery, facts and reservation card comfortable on narrow tablets. */
+@media (max-width: 800px) {
+  .detail-content-grid { grid-template-columns: minmax(0, 1fr); }
+  .detail-booking-box { grid-row: auto; }
+  .detail-main-column { grid-row: auto; }
 }

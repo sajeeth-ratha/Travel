@@ -70,8 +70,8 @@ const DEFAULT_PACKAGES = [
     coverImage: 'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1200&q=80',
     gallery: [
       'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1545569341-9eb8b30979d9?auto=format&fit=crop&w=800&q=80'
+      'https://images.unsplash.com/photo-1686560663895-34def14ccfe8?auto=format&fit=crop&w=800&q=80',
+      'https://images.unsplash.com/photo-1741851374655-3911c1b0e95a?auto=format&fit=crop&w=800&q=80'
     ],
     shortDescription: 'Step through thousand vermillion torii gates, participate in traditional matcha ceremonies, and stay in authentic ryokans.',
     fullDescription: 'Discover the peaceful heart of historic Japan. Wander through bamboo groves, marvel at gold-leaf shrines, savor seasonal multi-course kaiseki meals, and experience peaceful Zen meditation under ancient cedar trees.',
@@ -378,6 +378,144 @@ const DEFAULT_PACKAGES = [
   }
 ]
 
+// Standalone rooms can be booked without buying a travel package.
+const DEFAULT_ROOMS = [
+  {
+    id: 'room-1', name: 'Caldera View Suite', property: 'Aegean House', destination: 'Santorini', country: 'Greece',
+    type: 'Private suite', price: 285, originalPrice: 329, rating: 4.9, reviewCount: 126, guests: 2, beds: '1 king bed',
+    coverImage: 'https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=1200&q=85',
+    gallery: ['https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=1200&q=85', 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1200&q=85', 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1200&q=85'],
+    description: 'A quiet whitewashed suite with a private terrace, plunge pool and open views across the Aegean.',
+    amenities: ['Sea view', 'Private terrace', 'Plunge pool', 'Breakfast included', 'Wi-Fi']
+  },
+  {
+    id: 'room-2', name: 'Garden Ryokan Room', property: 'Kiri Kyoto Inn', destination: 'Kyoto', country: 'Japan',
+    type: 'Traditional room', price: 198, originalPrice: 235, rating: 4.8, reviewCount: 94, guests: 2, beds: '2 futon beds',
+    coverImage: 'https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&w=1200&q=85',
+    gallery: ['https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&w=1200&q=85', 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=85', 'https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?auto=format&fit=crop&w=1200&q=85'],
+    description: 'A calm tatami room opening onto a small garden, a short walk from Kyoto’s historic lanes.',
+    amenities: ['Garden view', 'Tatami flooring', 'Tea set', 'Onsen access', 'Wi-Fi']
+  },
+  {
+    id: 'room-3', name: 'Paris Corner Room', property: 'Maison des Arts', destination: 'Paris', country: 'France',
+    type: 'Boutique hotel room', price: 225, originalPrice: 270, rating: 4.7, reviewCount: 211, guests: 2, beds: '1 queen bed',
+    coverImage: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1200&q=85',
+    gallery: ['https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1200&q=85', 'https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=1200&q=85', 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1200&q=85'],
+    description: 'A bright boutique stay in a classic Paris building, close to cafés, galleries and the metro.',
+    amenities: ['City view', 'Air conditioning', 'Coffee machine', 'Daily housekeeping', 'Wi-Fi']
+  },
+  {
+    id: 'room-4', name: 'Jungle Pool Villa', property: 'Sari Ubud Retreat', destination: 'Ubud, Bali', country: 'Indonesia',
+    type: 'Entire villa', price: 245, originalPrice: 295, rating: 4.9, reviewCount: 87, guests: 3, beds: '1 king bed + sofa bed',
+    coverImage: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1200&q=85',
+    gallery: ['https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1200&q=85', 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1200&q=85', 'https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?auto=format&fit=crop&w=1200&q=85'],
+    description: 'A private villa tucked into tropical greenery with a pool, outdoor shower and a slow island feel.',
+    amenities: ['Private pool', 'Garden view', 'Outdoor shower', 'Breakfast included', 'Wi-Fi']
+  },
+  {
+    id: 'room-5', name: 'Harbour View Loft', property: 'Porto Blue House', destination: 'Porto', country: 'Portugal', type: 'Boutique hotel room', price: 154, originalPrice: 185, rating: 4.7, reviewCount: 73, guests: 2, beds: '1 queen bed',
+    coverImage: 'https://images.unsplash.com/photo-1601918774946-25832a4be0d6?auto=format&fit=crop&w=1200&q=85', gallery: ['https://images.unsplash.com/photo-1601918774946-25832a4be0d6?auto=format&fit=crop&w=1200&q=85', 'https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=1200&q=85', 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1200&q=85'],
+    description: 'A light-filled loft near the Douro waterfront, with a balcony for watching the old town wake up.', amenities: ['River view', 'Balcony', 'Breakfast included', 'Wi-Fi']
+  },
+  {
+    id: 'room-6', name: 'Alpine Chalet Room', property: 'Matterhorn Lodge', destination: 'Zermatt', country: 'Switzerland', type: 'Mountain hotel room', price: 278, originalPrice: 320, rating: 4.9, reviewCount: 108, guests: 2, beds: '1 king bed',
+    coverImage: 'https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=1200&q=85', gallery: ['https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=1200&q=85', 'https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?auto=format&fit=crop&w=1200&q=85', 'https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=1200&q=85'],
+    description: 'A warm wood-lined retreat with mountain views and an easy walk to the village railway station.', amenities: ['Mountain view', 'Sauna access', 'Breakfast included', 'Wi-Fi']
+  },
+  {
+    id: 'room-7', name: 'Riad Courtyard Suite', property: 'Dar Zayna', destination: 'Marrakech', country: 'Morocco', type: 'Traditional riad suite', price: 142, originalPrice: 170, rating: 4.8, reviewCount: 82, guests: 2, beds: '1 king bed',
+    coverImage: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=85', gallery: ['https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=85', 'https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?auto=format&fit=crop&w=1200&q=85', 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=85'],
+    description: 'A peaceful suite around a leafy courtyard, a few minutes from the spice-scented medina lanes.', amenities: ['Courtyard view', 'Rooftop terrace', 'Breakfast included', 'Wi-Fi']
+  },
+  {
+    id: 'room-8', name: 'Safari Canvas Suite', property: 'Savanna House', destination: 'Serengeti', country: 'Tanzania', type: 'Luxury tented suite', price: 390, originalPrice: 445, rating: 4.9, reviewCount: 56, guests: 2, beds: '1 king bed',
+    coverImage: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1200&q=85', gallery: ['https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1200&q=85', 'https://images.unsplash.com/photo-1534177616072-ef7dc120449d?auto=format&fit=crop&w=1200&q=85', 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&w=1200&q=85'],
+    description: 'A comfortable canvas suite on the open plains, with a private deck for watching the sunset.', amenities: ['Safari view', 'Private deck', 'Full board', 'Wi-Fi']
+  },
+  {
+    id: 'room-9', name: 'Oceanfront Casita', property: 'Casa Palma', destination: 'Tulum', country: 'Mexico', type: 'Beachfront villa', price: 265, originalPrice: 310, rating: 4.8, reviewCount: 143, guests: 3, beds: '1 king bed + daybed',
+    coverImage: 'https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1200&q=85', gallery: ['https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1200&q=85', 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1200&q=85', 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1200&q=85'],
+    description: 'A breezy beach casita with a shaded patio, turquoise water and cafés close by.', amenities: ['Sea view', 'Private terrace', 'Pool', 'Wi-Fi']
+  },
+  {
+    id: 'room-10', name: 'Garden Pavilion', property: 'Harbour Fern Retreat', destination: 'Queenstown', country: 'New Zealand', type: 'Garden suite', price: 219, originalPrice: 250, rating: 4.8, reviewCount: 67, guests: 2, beds: '1 queen bed',
+    coverImage: 'https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?auto=format&fit=crop&w=1200&q=85', gallery: ['https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?auto=format&fit=crop&w=1200&q=85', 'https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=1200&q=85', 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1200&q=85'],
+    description: 'A quiet garden hideaway near the lake, with a timber deck and clear views toward the hills.', amenities: ['Garden view', 'Private deck', 'Hot tub', 'Wi-Fi']
+  },
+  {
+    id: 'room-11', name: 'Lantern District Studio', property: 'Hoi An Riverside Rooms', destination: 'Hoi An', country: 'Vietnam', type: 'Boutique studio', price: 96, originalPrice: 118, rating: 4.7, reviewCount: 91, guests: 2, beds: '1 queen bed',
+    coverImage: 'https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&w=1200&q=85', gallery: ['https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&w=1200&q=85', 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=85', 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=85'],
+    description: 'A simple, calm studio close to the riverside market and Hoi An’s lantern-lit old streets.', amenities: ['River view', 'Air conditioning', 'Breakfast included', 'Wi-Fi']
+  },
+  {
+    id: 'room-12', name: 'Cliffside Ocean Room', property: 'Pacific Lookout', destination: 'Big Sur, California', country: 'United States', type: 'Coastal hotel room', price: 315, originalPrice: 360, rating: 4.8, reviewCount: 118, guests: 2, beds: '1 king bed',
+    coverImage: 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1200&q=85', gallery: ['https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1200&q=85', 'https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1200&q=85', 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1200&q=85'],
+    description: 'A coastal hideaway with wide Pacific views, a fireplace and scenic trails just outside.', amenities: ['Sea view', 'Fireplace', 'Restaurant', 'Wi-Fi']
+  },
+  {
+    id: 'room-13', name: 'Old Town Balcony Room', property: 'Casa Alfama', destination: 'Lisbon', country: 'Portugal', type: 'City hotel room', price: 168, originalPrice: 199, rating: 4.6, reviewCount: 75, guests: 2, beds: '1 double bed',
+    coverImage: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1200&q=85', gallery: ['https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1200&q=85', 'https://images.unsplash.com/photo-1601918774946-25832a4be0d6?auto=format&fit=crop&w=1200&q=85', 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1200&q=85'],
+    description: 'A bright room with a small balcony in a historic neighbourhood above the Tagus River.', amenities: ['City view', 'Balcony', 'Breakfast included', 'Wi-Fi']
+  },
+  {
+    id: 'room-14', name: 'Palm Garden Bungalow', property: 'Coral Sands Stay', destination: 'Phuket', country: 'Thailand', type: 'Beach bungalow', price: 176, originalPrice: 210, rating: 4.7, reviewCount: 103, guests: 3, beds: '1 king bed + sofa bed',
+    coverImage: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1200&q=85', gallery: ['https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1200&q=85', 'https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1200&q=85', 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1200&q=85'],
+    description: 'A private bungalow surrounded by palms, a short stroll from the sand and island restaurants.', amenities: ['Sea view', 'Private pool', 'Breakfast included', 'Wi-Fi']
+  },
+  {
+    id: 'room-15', name: 'Canal House Suite', property: 'The Nine Streets House', destination: 'Amsterdam', country: 'Netherlands', type: 'City suite', price: 204, originalPrice: 240, rating: 4.7, reviewCount: 132, guests: 2, beds: '1 queen bed',
+    coverImage: 'https://images.unsplash.com/photo-1601918774946-25832a4be0d6?auto=format&fit=crop&w=1200&q=85', gallery: ['https://images.unsplash.com/photo-1601918774946-25832a4be0d6?auto=format&fit=crop&w=1200&q=85', 'https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=1200&q=85', 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=85'],
+    description: 'A relaxed canal-side suite within walking distance of galleries, cafés and the city centre.', amenities: ['Canal view', 'Coffee machine', 'Breakfast included', 'Wi-Fi']
+  },
+  {
+    id: 'room-16', name: 'Vineyard Guest Suite', property: 'Casa da Vinha', destination: 'Douro Valley', country: 'Portugal', type: 'Country house suite', price: 188, originalPrice: 220, rating: 4.9, reviewCount: 48, guests: 2, beds: '1 king bed',
+    coverImage: 'https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?auto=format&fit=crop&w=1200&q=85', gallery: ['https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?auto=format&fit=crop&w=1200&q=85', 'https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=1200&q=85', 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=85'],
+    description: 'A countryside guest suite overlooking the Douro hills, with a terrace and vineyard walks nearby.', amenities: ['Vineyard view', 'Private terrace', 'Breakfast included', 'Wi-Fi']
+  }
+]
+
+// Add four sample rooms in each place so the country filter has a useful list.
+// The Unsplash images below are open-source hosted photos and are cropped by CSS.
+const EXTRA_ROOM_PLACES = [
+  ['Rome', 'Italy'], ['Barcelona', 'Spain'], ['London', 'United Kingdom'], ['Vienna', 'Austria'], ['Prague', 'Czechia'],
+  ['Dubrovnik', 'Croatia'], ['Reykjavik', 'Iceland'], ['Istanbul', 'Turkey'], ['Cairo', 'Egypt'], ['Nairobi', 'Kenya'],
+  ['Cape Town', 'South Africa'], ['Jaipur', 'India'], ['Kathmandu', 'Nepal'], ['Seoul', 'South Korea'], ['Singapore', 'Singapore'],
+  ['Kuala Lumpur', 'Malaysia'], ['Sydney', 'Australia'], ['Nadi', 'Fiji'], ['Vancouver', 'Canada'], ['Rio de Janeiro', 'Brazil'],
+  ['Cusco', 'Peru'], ['Santiago', 'Chile'], ['La Fortuna', 'Costa Rica'], ['Dubai', 'United Arab Emirates'], ['Bergen', 'Norway']
+]
+const ROOM_STYLES = [
+  { name: 'Old Town Comfort Room', type: 'City hotel room', price: 145, beds: '1 queen bed', amenities: ['City view', 'Air conditioning', 'Breakfast included', 'Wi-Fi'], photos: ['photo-1590490360182-c33d57733427', 'photo-1601918774946-25832a4be0d6', 'photo-1611892440504-42a792e24d32'] },
+  { name: 'Garden View Suite', type: 'Garden suite', price: 205, beds: '1 king bed', amenities: ['Garden view', 'Private terrace', 'Breakfast included', 'Wi-Fi'], photos: ['photo-1600210492486-724fe5c67fb0', 'photo-1616486029423-aaa4789e8c9a', 'photo-1618221195710-dd6b41faaea6'] },
+  { name: 'Coastline Pool Stay', type: 'Beach hotel room', price: 238, beds: '1 king bed + sofa bed', amenities: ['Sea view', 'Private pool', 'Breakfast included', 'Wi-Fi'], photos: ['photo-1571896349842-33c89424de2d', 'photo-1500375592092-40eb2168fd21', 'photo-1537996194471-e657df975ab4'] },
+  { name: 'Family Residence', type: 'Family apartment', price: 185, beds: '1 queen bed + sofa bed', amenities: ['Kitchen', 'City view', 'Air conditioning', 'Wi-Fi'], photos: ['photo-1611892440504-42a792e24d32', 'photo-1616486338812-3dadae4b4ace', 'photo-1540518614846-7eded433c457'] }
+]
+
+// Create 100 editable demo room records from the place and room-style lists.
+EXTRA_ROOM_PLACES.forEach(([destination, country], placeIndex) => {
+  ROOM_STYLES.forEach((style, styleIndex) => {
+    const idNumber = 17 + placeIndex * ROOM_STYLES.length + styleIndex
+    const gallery = style.photos.map(photo => `https://images.unsplash.com/${photo}?auto=format&fit=crop&w=900&h=650&q=80`)
+    DEFAULT_ROOMS.push({
+      id: `room-${idNumber}`,
+      name: `${style.name} ${destination}`,
+      property: `${destination} ${['House', 'Stay', 'Retreat', 'Suites'][styleIndex]}`,
+      destination,
+      country,
+      type: style.type,
+      price: style.price + (placeIndex % 6) * 12,
+      originalPrice: style.price + 45 + (placeIndex % 6) * 12,
+      rating: [4.6, 4.7, 4.8, 4.9][(placeIndex + styleIndex) % 4],
+      reviewCount: 35 + placeIndex * 3 + styleIndex * 7,
+      guests: styleIndex === 2 || styleIndex === 3 ? 4 : 2,
+      beds: style.beds,
+      coverImage: gallery[0],
+      gallery,
+      description: `A comfortable ${style.type.toLowerCase()} in ${destination}, with an easy base for exploring local food, neighbourhoods and nearby sights.`,
+      amenities: style.amenities
+    })
+  })
+})
+
 // Default seed bookings for live demonstration and testing
 const DEFAULT_BOOKINGS = [
   {
@@ -455,6 +593,7 @@ const PROMO_CODES = [
 // Keys used in browser localStorage
 const KEYS = {
   PACKAGES: 'wanderlust_packages',
+  ROOMS: 'wanderlust_rooms',
   BOOKINGS: 'wanderlust_bookings',
   WISHLIST: 'wanderlust_wishlist',
   REVIEWS: 'wanderlust_reviews'
@@ -464,6 +603,36 @@ const KEYS = {
 export function initStorage() {
   if (!localStorage.getItem(KEYS.PACKAGES)) {
     localStorage.setItem(KEYS.PACKAGES, JSON.stringify(DEFAULT_PACKAGES))
+  }
+  // Refresh the Kyoto gallery for returning visitors while preserving edits to other package details.
+  if (localStorage.getItem('wanderlust_kyoto_gallery_version') !== '2') {
+    try {
+      const savedPackages = JSON.parse(localStorage.getItem(KEYS.PACKAGES)) || []
+      const kyotoPackage = DEFAULT_PACKAGES.find(pkg => pkg.id === 'pkg-2')
+      const updatedPackages = savedPackages.map(pkg => pkg.id === 'pkg-2'
+        ? { ...pkg, coverImage: kyotoPackage.coverImage, gallery: kyotoPackage.gallery }
+        : pkg)
+      localStorage.setItem(KEYS.PACKAGES, JSON.stringify(updatedPackages))
+      localStorage.setItem('wanderlust_kyoto_gallery_version', '2')
+    } catch (e) {
+      console.error('Error refreshing Kyoto package photos', e)
+    }
+  }
+  if (!localStorage.getItem(KEYS.ROOMS)) {
+    localStorage.setItem(KEYS.ROOMS, JSON.stringify(DEFAULT_ROOMS))
+  }
+  // Add the new destination examples once for returning visitors without
+  // replacing rooms they have edited in the admin page.
+  if (localStorage.getItem('wanderlust_rooms_seed_version') !== '3') {
+    try {
+      const savedRooms = JSON.parse(localStorage.getItem(KEYS.ROOMS)) || []
+      const savedIds = new Set(savedRooms.map(room => room.id))
+      const addedRooms = DEFAULT_ROOMS.filter(room => !savedIds.has(room.id))
+      localStorage.setItem(KEYS.ROOMS, JSON.stringify([...savedRooms, ...addedRooms]))
+      localStorage.setItem('wanderlust_rooms_seed_version', '3')
+    } catch (e) {
+      console.error('Error adding example rooms', e)
+    }
   }
   if (!localStorage.getItem(KEYS.BOOKINGS)) {
     localStorage.setItem(KEYS.BOOKINGS, JSON.stringify(DEFAULT_BOOKINGS))
@@ -485,6 +654,49 @@ export function getPackages() {
     console.error('Error reading packages from localStorage', e)
     return DEFAULT_PACKAGES
   }
+}
+
+// Return the room listings saved in this browser.
+export function getRooms() {
+  initStorage()
+  try {
+    const storedRooms = JSON.parse(localStorage.getItem(KEYS.ROOMS)) || []
+    return storedRooms.map(room => {
+      const starterRoom = DEFAULT_ROOMS.find(item => item.id === room.id)
+      return starterRoom ? {
+        ...starterRoom,
+        ...room,
+        originalPrice: room.originalPrice || starterRoom.originalPrice,
+        amenities: [...new Set([...(room.amenities || []), ...(starterRoom.amenities || []).filter(item => item === 'Wi-Fi')])]
+      } : room
+    })
+  } catch (e) {
+    console.error('Error reading rooms from localStorage', e)
+    return DEFAULT_ROOMS
+  }
+}
+
+export function getRoomById(id) {
+  return getRooms().find(room => room.id === id) || null
+}
+
+export function saveRoom(roomData) {
+  const rooms = getRooms()
+  if (roomData.id) {
+    const index = rooms.findIndex(room => room.id === roomData.id)
+    if (index === -1) return false
+    rooms[index] = { ...rooms[index], ...roomData }
+  } else {
+    rooms.unshift({ ...roomData, id: 'room-' + Date.now(), rating: 5, reviewCount: 0, gallery: roomData.gallery || [roomData.coverImage] })
+  }
+  localStorage.setItem(KEYS.ROOMS, JSON.stringify(rooms))
+  return true
+}
+
+export function deleteRoom(id) {
+  const rooms = getRooms().filter(room => room.id !== id)
+  localStorage.setItem(KEYS.ROOMS, JSON.stringify(rooms))
+  return true
 }
 
 export function getPackageById(id) {
@@ -654,6 +866,7 @@ export function addReview(packageId, reviewData) {
 
 export function resetToDemoData() {
   localStorage.setItem(KEYS.PACKAGES, JSON.stringify(DEFAULT_PACKAGES))
+  localStorage.setItem(KEYS.ROOMS, JSON.stringify(DEFAULT_ROOMS))
   localStorage.setItem(KEYS.BOOKINGS, JSON.stringify(DEFAULT_BOOKINGS))
   localStorage.setItem(KEYS.WISHLIST, JSON.stringify(['pkg-1', 'pkg-2']))
   return true

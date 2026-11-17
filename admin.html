@@ -9,8 +9,13 @@
   <link rel="stylesheet" href="/admin.css">
 </head>
 <body>
-  <header class="top"><a class="logo" href="index.html" aria-label="Wanderlust home"><img src="/assets/wanderlust-mountain-logo.png" alt="Wanderlust"></a><nav><a href="index.html">Home</a><a href="packages.html">Packages</a><a href="bookings.html">My bookings</a><a id="account-link" href="login.html">Login</a></nav></header>
+  <header class="top"><a class="logo" href="index.html" aria-label="Wanderlust home"><img src="/assets/wanderlust-mountain-logo.png" alt="Wanderlust"></a>
+      <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="primary-navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+      <nav id="primary-navigation" class="site-nav" aria-label="Main navigation"><a href="index.html">Home</a><a href="rooms.html">Stays</a><a href="packages.html">Trips</a><a id="account-link" href="login.html">Login</a></nav></header>
   <main class="admin-workspace">
+    <div class="admin-dashboard-grid">
+      <aside class="admin-side-menu" aria-label="Admin sections"><div class="admin-side-label">MANAGE</div><a href="#booking-section">Guest bookings</a><a href="#admin-package-section" data-admin-section="admin-package-section">Travel packages</a><a href="#admin-room-section" data-admin-section="admin-room-section">Rooms & stays</a><a href="rooms.html">View room listings ↗</a></aside>
+      <div class="admin-main-column">
     <div class="admin-toolbar"><div class="admin-page-title"><div class="eyebrow">AGENCY WORKSPACE</div><h1>Guest Details</h1></div><label class="admin-search"><span class="search-icon" aria-hidden="true">⌕</span><input id="booking-search" type="search" placeholder="Search guest, trip or booking"></label><div class="admin-user"><span class="admin-avatar">W</span><span><b id="admin-name">Admin</b><small>Administrator</small></span></div><button class="admin-logout" id="admin-logout">Log out</button></div>
     <section class="admin-personal-tools" aria-label="Your rewards and wishlist">
       <div class="admin-reward-card"><div class="eyebrow">MY REWARDS</div><div class="admin-reward-total"><strong id="admin-points">0</strong><span>points</span></div><small id="admin-points-value">$0 available to use</small><p>Earn 1 point per $10 spent. Each point is worth $0.10.</p></div>
@@ -18,13 +23,26 @@
     </section>
     <div class="admin-breadcrumb"><a href="index.html">Dashboard</a><span>/</span><b id="selected-guest-name">Guests</b></div>
     <div class="guest-layout"><aside class="guest-profile" id="guest-profile"></aside><section class="current-booking" id="current-booking"></section></div>
-    <section class="booking-history"><div class="history-heading"><div><div class="eyebrow">GUEST ACTIVITY</div><h2>Booking History</h2><p>Search and update reservations in one place.</p></div><span id="booking-count"></span></div><div class="history-tools"><div class="booking-filters" role="group" aria-label="Filter bookings"><button class="selected" type="button" data-history-filter="All">All</button><button type="button" data-history-filter="Confirmed">Confirmed</button><button type="button" data-history-filter="Pending">Pending</button><button type="button" data-history-filter="Cancelled">Cancelled</button></div></div><div class="table-wrap"><table><thead><tr><th>Booking</th><th>Guest</th><th>Trip</th><th>Travel date</th><th>Guests</th><th>Status</th><th>View</th></tr></thead><tbody id="admin-bookings"></tbody></table></div></section>
-    <details class="package-manager"><summary><span><small>TRIP COLLECTION</small><b>Manage travel packages</b></span><span class="manager-plus">+</span></summary>
+    <section class="booking-history" id="booking-section"><div class="history-heading"><div><div class="eyebrow">GUEST ACTIVITY</div><h2>Booking History</h2><p>Search and update room or trip reservations.</p></div><span id="booking-count"></span></div><div class="history-tools"><div class="booking-filters" role="group" aria-label="Filter bookings"><button class="selected" type="button" data-history-filter="All">All</button><button type="button" data-history-filter="Confirmed">Confirmed</button><button type="button" data-history-filter="Pending">Pending</button><button type="button" data-history-filter="Cancelled">Cancelled</button></div></div><div class="table-wrap"><table><thead><tr><th>Booking</th><th>Guest</th><th>Trip or room</th><th>Travel / stay dates</th><th>Guests</th><th>Status</th><th>View</th></tr></thead><tbody id="admin-bookings"></tbody></table></div></section>
+    <details class="package-manager" id="admin-package-section"><summary><span><small>TRIP COLLECTION</small><b>Manage travel packages</b></span><span class="manager-plus">+</span></summary>
       <section class="admin-section"><div class="admin-title"><div><div class="eyebrow">YOUR COLLECTION</div><h2>Travel packages</h2></div><div class="admin-actions"><button class="button" id="add-package">+ Add package</button><button class="button outline" id="reset-data">Reset demo data</button></div></div>
-        <div class="table-wrap"><table><thead><tr><th>Trip</th><th>Place</th><th>Duration</th><th>Price</th><th>Actions</th></tr></thead><tbody id="admin-packages"></tbody></table></div>
+        <div class="table-wrap"><table><thead><tr><th>Trip</th><th>Place</th><th>Departure dates</th><th>Price</th><th>Actions</th></tr></thead><tbody id="admin-packages"></tbody></table></div>
       </section>
     </details>
-  </main><footer>Wanderlust Travel · Find your next adventure</footer>
+    <details class="package-manager room-manager" id="admin-room-section"><summary><span><small>STAY COLLECTION</small><b>Manage rooms & stays</b></span><span class="manager-plus">+</span></summary>
+      <section class="admin-section"><div class="admin-title"><div><div class="eyebrow">ROOM INVENTORY</div><h2>Rooms & stays</h2></div><div class="admin-actions"><button class="button" id="add-room">+ Add room</button></div></div>
+        <div class="table-wrap"><table><thead><tr><th>Room</th><th>Property</th><th>Place</th><th>Room type</th><th>Price / night</th><th>Check-in dates</th><th>Actions</th></tr></thead><tbody id="admin-rooms"></tbody></table></div>
+      </section>
+    </details>
+      </div>
+    </div>
+  </main><footer class="site-footer">
+    <div class="footer-inner wrap">
+      <div class="footer-brand"><a class="footer-logo" href="index.html">Wanderlust</a><p>Thoughtful places and trips, all in one place.</p></div>
+      <nav class="footer-links" aria-label="Footer navigation"><a href="rooms.html">Find a stay</a><a href="packages.html">Explore trips</a><a href="bookings.html">My bookings</a><a href="panel.html">My account</a></nav>
+    </div>
+    <div class="footer-bottom"><span>© 2026 Wanderlust Travel</span><span>Travel well. Keep the good memories.</span></div>
+  </footer>
   <script type="module" src="/app.js"></script>
 </body>
 </html>

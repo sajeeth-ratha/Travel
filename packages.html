@@ -5,15 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/png" href="/assets/wanderlust-mountain-logo.png">
   <title>Explore Trips | Wanderlust</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,300..700,0..1,-50..200" rel="stylesheet">
   <link rel="stylesheet" href="/style.css">
   <link rel="stylesheet" href="/packages.css">
 </head>
 <body>
-  <header class="top"><a class="logo" href="index.html" aria-label="Wanderlust home"><img src="/assets/wanderlust-mountain-logo.png" alt="Wanderlust"></a><nav><a href="index.html">Home</a><a href="packages.html">Packages</a><a href="bookings.html">My bookings</a><a id="account-link" href="login.html">Login</a></nav></header>
-  <main class="wrap page"><div class="eyebrow">THE COLLECTION</div><h1>Find your next trip</h1><p class="muted">Browse our trips and choose your favourite.</p>
-    <div class="catalog-search"><input id="package-search" placeholder="Search by place or travel style"><span id="trip-count">0 trips</span></div>
-    <div class="cards" id="package-cards"></div>
-  </main><footer>Wanderlust Travel · Find your next adventure</footer>
+  <header class="top"><a class="logo" href="index.html" aria-label="Wanderlust home"><img src="/assets/wanderlust-mountain-logo.png" alt="Wanderlust"></a>
+      <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="primary-navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+      <nav id="primary-navigation" class="site-nav" aria-label="Main navigation"><a href="index.html">Home</a><a href="rooms.html">Stays</a><a href="packages.html">Trips</a><a id="account-link" href="login.html">Login</a></nav></header>
+  <main class="package-catalog">
+    <section class="package-catalog-hero"><div class="package-catalog-copy"><div class="eyebrow light">CURATED JOURNEYS · OPEN THE WORLD</div><h1>Find your next trip</h1><p>Thoughtful trips to remarkable places, made easier to explore.</p></div>
+      <label class="package-search-box"><span class="material-symbols-outlined" aria-hidden="true">search</span><span class="sr-only">Search trips</span><input id="package-search" type="search" placeholder="Search a place or travel style"><span id="trip-count">0 trips</span></label>
+    </section>
+    <section class="package-catalog-content"><div class="package-catalog-heading"><div><div class="eyebrow">THE WANDERLUST COLLECTION</div><h2>Journeys worth remembering</h2></div><p>Choose a trip to see what’s included, explore the itinerary, and reserve your place.</p></div>
+      <div class="cards package-cards" id="package-cards"></div>
+    </section>
+  </main><footer class="site-footer">
+    <div class="footer-inner wrap">
+      <div class="footer-brand"><a class="footer-logo" href="index.html">Wanderlust</a><p>Thoughtful places and trips, all in one place.</p></div>
+      <nav class="footer-links" aria-label="Footer navigation"><a href="rooms.html">Find a stay</a><a href="packages.html">Explore trips</a><a href="bookings.html">My bookings</a><a href="panel.html">My account</a></nav>
+    </div>
+    <div class="footer-bottom"><span>© 2026 Wanderlust Travel</span><span>Travel well. Keep the good memories.</span></div>
+  </footer>
   <script type="module" src="/app.js"></script>
 </body>
 </html>

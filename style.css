@@ -1,7 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+
 /* Edit this file to change shared styles used on every page. */
 /* Main colours and default font. Change these values to update the theme. */
 :root {
-  font-family: Arial, sans-serif;
+  font-family: 'DM Sans', sans-serif;
+  --body-font: 'DM Sans', sans-serif;
+  --heading-font: 'Manrope', 'DM Sans', sans-serif;
   color: #172b3a;
   background: #fff;
   --blue: #0085fb;
@@ -16,20 +20,32 @@ body { margin: 0; }
 a { color: inherit; text-decoration: none; }
 button, input, select { font: inherit; }
 button { cursor: pointer; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+.material-symbols-outlined { display: inline-block; font-family: 'Material Symbols Outlined'; font-weight: normal; font-style: normal; line-height: 1; letter-spacing: normal; text-transform: none; white-space: nowrap; word-wrap: normal; direction: ltr; font-feature-settings: 'liga'; -webkit-font-feature-settings: 'liga'; -webkit-font-smoothing: antialiased; }
 
 /* Top header: logo and links between the pages. */
 .top {
-  min-height: 94px;
-  padding: 16px max(calc((100% - 1160px) / 2), 24px);
+  position: relative;
+  min-height: 82px;
+  padding: 10px max(calc((100% - 1160px) / 2), 24px);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid #e7ece9;
+  border-bottom: 1px solid #e4edf5;
+  background: #fff;
+  box-shadow: 0 4px 18px #173a5607;
 }
 .logo { display: flex; align-items: center; flex: 0 0 auto; height: 62px; }
 .logo img { display: block; width: auto; height: 62px; object-fit: contain; }
-nav { display: flex; gap: 24px; font-size: 14px; font-weight: 600; }
-nav a:hover, .section-heading > a { color: var(--blue); }
+.top .site-nav { display: flex; align-items: center; gap: 4px; padding: 5px; border: 1px solid #e6eef6; border-radius: 999px; background: #f7faff; }
+.site-nav a { position: relative; padding: 10px 15px; border-radius: 999px; color: #40596f; font-size: 12px; font-weight: 700; transition: color .18s ease, background .18s ease, box-shadow .18s ease; }
+.site-nav a:hover { color: #006ecf; background: #eaf4ff; }
+.site-nav a[aria-current="page"] { color: #0869bd; background: white; box-shadow: 0 2px 8px #183b560f; }
+.site-nav a[aria-current="page"]::after { display: none; }
+.site-nav a#account-link { margin-left: 4px; color: white; background: var(--navy); }
+.site-nav a#account-link:hover, .site-nav a#account-link[aria-current="page"] { color: white; background: var(--blue); }
+.section-heading > a { color: var(--blue); }
+.menu-toggle { display: none; }
 
 /* Large photo area and headline at the top of the home page. */
 .hero {
@@ -40,8 +56,21 @@ nav a:hover, .section-heading > a { color: var(--blue); }
   justify-content: center;
   gap: 24px;
   color: white;
-  background: linear-gradient(90deg, #092832bd, #09283230),
-    url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1800&q=85') center / cover;
+  position: relative;
+  background-color: #07345f;
+  background-image: url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1800&q=85');
+  background-position: center;
+  background-size: cover;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(7, 52, 95, 0.72);
+}
+.hero > * {
+  position: relative;
+  z-index: 1;
 }
 .hero-text { max-width: 620px; }
 .hero h1 { margin: 12px 0; font: 500 clamp(42px, 6vw, 68px)/1.05 Georgia, serif; }
@@ -130,8 +159,17 @@ th { color: #51635e; background: var(--light); }
 td button { border: 0; color: var(--blue); background: none; font-weight: 700; }
 td .danger-text { color: #a94444; }
 
-/* Shared footer and the booking form pop-up. */
-footer { padding: 30px; color: white; background: var(--navy); text-align: center; font-size: 13px; }
+/* Shared site footer and the booking form pop-up. */
+.site-footer { margin-top: 30px; color: #e8f1f8; background: #082e51; }
+.footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 30px; padding-top: 30px; padding-bottom: 24px; }
+.footer-brand { display: grid; gap: 5px; }
+.footer-logo { color: white; font: italic 700 24px Georgia, serif; letter-spacing: -.8px; }
+.footer-brand p { margin: 0; color: #c4d5e3; font-size: 11px; }
+.footer-links { display: flex; flex-wrap: wrap; gap: 20px; font-size: 11px; font-weight: 600; }
+.footer-links a { color: #e8f1f8; }
+.footer-links a:hover { color: white; text-decoration: underline; text-underline-offset: 3px; }
+.footer-bottom { display: flex; justify-content: space-between; gap: 16px; padding: 12px max(calc((100% - 1160px) / 2), 24px); border-top: 1px solid #ffffff20; color: #b4c8d9; font-size: 10px; }
+footer { padding: 0; text-align: left; font-size: inherit; }
 dialog { width: min(480px, calc(100% - 30px)); padding: 30px; border: 0; border-radius: 8px; box-shadow: 0 20px 90px #0005; }
 dialog::backdrop { background: #102b35a8; }
 dialog form { display: grid; gap: 13px; }
@@ -159,11 +197,293 @@ dialog button:disabled { cursor: wait; opacity: 0.7; }
 .reward-choice input:disabled { cursor: not-allowed; }
 dialog .close { position: absolute; top: 14px; right: 18px; border: 0; background: transparent; font-size: 25px; }
 
+/* User details banner and account creation inside checkout dialog */
+.checkout-user-banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 12px;
+}
+.checkout-user-banner.signed-in {
+  border: 1px solid #bae6fd;
+  background-color: #f0f9ff;
+  color: #0369a1;
+}
+.checkout-user-banner.guest {
+  border: 1px solid #e2e8f0;
+  background-color: #f8fafc;
+  color: #475569;
+}
+.checkout-user-banner .badge-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #0284c7;
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.checkout-user-banner b { display: block; font-size: 12px; }
+.checkout-user-banner small { display: block; color: #64748b; font-size: 11px; }
+.checkout-user-banner a { color: #0284c7; font-weight: 700; text-decoration: underline; }
+
+.checkout-account-box {
+  display: grid;
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid #e0f2fe;
+  border-radius: 6px;
+  background-color: #f0f9ff;
+}
+.checkout-account-box .create-account-toggle {
+  display: flex !important;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+}
+.checkout-account-box .create-account-toggle input {
+  width: 16px;
+  height: 16px;
+  margin-top: 2px;
+  accent-color: var(--blue);
+}
+.checkout-account-box .create-account-toggle span {
+  display: grid;
+  gap: 2px;
+}
+.checkout-account-box .create-account-toggle b {
+  color: #0f172a;
+  font-size: 12px;
+}
+.checkout-account-box .create-account-toggle small {
+  color: #0369a1;
+  font-size: 11px;
+}
+
+.password-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.password-input-wrap input {
+  width: 100%;
+  padding-right: 64px;
+}
+.toggle-password {
+  position: absolute;
+  right: 8px;
+  padding: 6px 10px;
+  border: 0;
+  border-radius: 4px;
+  background: #f1f5f9;
+  color: #475569;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.toggle-password:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+/* Demo Payment Helper */
+.demo-card-helper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px 12px;
+  border: 1px solid #bae6fd;
+  border-radius: 6px;
+  background-color: #f0f9ff;
+}
+.demo-card-helper .button {
+  padding: 6px 11px;
+  font-size: 11px;
+  font-weight: 700;
+  border-color: #0284c7;
+  color: #0284c7;
+}
+.demo-card-helper .card-hint {
+  color: #0369a1;
+  font-size: 11px;
+  font-family: monospace;
+}
+.card-fields-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.card-fields-grid label.full {
+  grid-column: 1 / -1;
+}
+
+/* Voucher Dialog & Receipt Modal */
+.voucher-dialog {
+  width: min(560px, calc(100% - 24px));
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 28px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 25px 70px rgba(15, 23, 42, 0.25);
+}
+.voucher-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+}
+.voucher-header .logo img {
+  height: 44px;
+}
+.voucher-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  background: #dcfce7;
+  color: #15803d;
+  font-size: 12px;
+  font-weight: 700;
+}
+.voucher-status-badge .check-icon {
+  display: inline-grid;
+  width: 16px;
+  height: 16px;
+  place-items: center;
+  border-radius: 50%;
+  background: #15803d;
+  color: white;
+  font-size: 10px;
+}
+.voucher-ref-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border: 1px solid #bae6fd;
+  border-radius: 8px;
+  background-color: #f0f9ff;
+  margin-bottom: 16px;
+}
+.voucher-ref-card span {
+  color: #0369a1;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+}
+.voucher-ref-card strong {
+  color: #0c4a6e;
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+.voucher-account-created {
+  padding: 10px 14px;
+  border-radius: 6px;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  color: #166534;
+  font-size: 12px;
+  margin-bottom: 14px;
+}
+.voucher-item-summary {
+  display: grid;
+  gap: 8px;
+  padding: 14px 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+.voucher-item-summary h3 {
+  margin: 0;
+  font-size: 17px;
+  color: #0f172a;
+}
+.voucher-details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  font-size: 12px;
+  color: #475569;
+}
+.voucher-details-grid > div > span {
+  display: block;
+  color: #94a3b8;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.voucher-details-grid > div > b {
+  color: #1e293b;
+}
+.voucher-pricing-table {
+  border-top: 1px solid #e2e8f0;
+  padding-top: 12px;
+  display: grid;
+  gap: 6px;
+  font-size: 13px;
+}
+.voucher-pricing-table > div {
+  display: flex;
+  justify-content: space-between;
+  color: #64748b;
+}
+.voucher-pricing-table .total-row {
+  border-top: 1px dashed #cbd5e1;
+  padding-top: 8px;
+  margin-top: 4px;
+  color: #0f172a;
+  font-size: 16px;
+  font-weight: 700;
+}
+.voucher-rewards-earned {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  background-color: #f0f9ff;
+  color: #0284c7;
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 4px;
+}
+.voucher-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 18px;
+}
+
+@media print {
+  body * { visibility: hidden; }
+  .voucher-dialog, .voucher-dialog * { visibility: visible; }
+  .voucher-dialog { position: absolute; left: 0; top: 0; width: 100%; border: 0; box-shadow: none; }
+  .voucher-actions, .close { display: none !important; }
+}
+
+/* Use a clean sans-serif pairing for readable text and modern headings. */
+h1, h2, h3, h4 { font-family: var(--heading-font) !important; letter-spacing: -.025em; }
+body { font-family: var(--body-font); font-synthesis: none; text-rendering: optimizeLegibility; }
+
 /* Tablet layout: fit the menu and cards into a narrower screen. */
 @media (max-width: 780px) {
   .top { flex-wrap: wrap; gap: 14px; }
   .logo, .logo img { height: 54px; }
-  nav { flex-wrap: wrap; gap: 12px; font-size: 12px; }
+  .top nav { flex-wrap: wrap; gap: 12px; font-size: 12px; }
   .search-fields { grid-template-columns: repeat(2, 1fr); }
   .cards { grid-template-columns: repeat(2, 1fr); }
   .detail-hero { grid-template-columns: 1fr; }
@@ -175,7 +495,10 @@ dialog .close { position: absolute; top: 14px; right: 18px; border: 0; backgroun
 @media (max-width: 520px) {
   .top { justify-content: center; }
   .logo, .logo img { height: 48px; }
-  nav { justify-content: center; width: 100%; }
+  .top nav { justify-content: center; width: 100%; }
+  .footer-inner { align-items: flex-start; flex-direction: column; gap: 17px; }
+  .footer-links { gap: 15px; }
+  .footer-bottom { flex-direction: column; gap: 6px; text-align: center; }
   .hero { padding-top: 45px; padding-bottom: 45px; }
   .hero h1 { font-size: 48px; }
   .search-fields, .cards, .stats, .booking { grid-template-columns: 1fr; }
@@ -183,4 +506,16 @@ dialog .close { position: absolute; top: 14px; right: 18px; border: 0; backgroun
   .page > h1 { font-size: 37px; }
   .admin-title { flex-wrap: wrap; }
   .admin-title h2 { width: 100%; }
+}
+
+/* Mobile navigation opens only when the menu button is tapped. */
+@media (max-width: 640px) {
+  .top { justify-content: space-between; gap: 10px; }
+  .top .menu-toggle { display: grid; gap: 4px; width: 42px; height: 42px; place-content: center; padding: 0; border: 1px solid #dbe5ed; border-radius: 10px; background: white; }
+  .menu-toggle span { display: block; width: 18px; height: 2px; border-radius: 2px; background: #173951; }
+  .top .site-nav { position: absolute; z-index: 20; top: calc(100% - 1px); right: 16px; left: 16px; display: none; align-items: stretch; gap: 2px; padding: 9px; border: 1px solid #e2eaf0; border-radius: 12px; background: white; box-shadow: 0 16px 35px #12324b20; }
+  .top .site-nav.is-open { display: grid; }
+  .top .site-nav a { padding: 12px; border-radius: 7px; }
+  .top .site-nav a:hover, .top .site-nav a[aria-current="page"] { background: #f0f7fd; }
+  .top .site-nav a[aria-current="page"]::after { display: none; }
 }
