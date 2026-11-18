@@ -1,8 +1,11 @@
 import { resolve } from 'path'
 import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
 
-// Multi-page Vite configuration for Travel Agency Web Application
+// Multi-page Vite configuration. Each page is its own Vue 3 entry, which keeps
+// the per-page stylesheets isolated while still sharing SFC components.
 export default defineConfig({
+  plugins: [vue()],
   server: {
     port: 5173,
     open: true

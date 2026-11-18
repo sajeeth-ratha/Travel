@@ -1,15 +1,19 @@
 {
   "name": "travel-agency-web-app",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
-  "description": "Travel Agency Web Application built with HTML5, CSS3, and JavaScript",
+  "description": "Travel Agency Web Application built with Vue 3, Vite, HTML5 and CSS3",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
+  "dependencies": {
+    "vue": "^3.5.13"
+  },
   "devDependencies": {
-    "vite": "^5.2.8"
+    "@vitejs/plugin-vue": "^5.2.1",
+    "vite": "^5.4.11"
   }
 }

@@ -291,3 +291,16 @@
   .admin-side-label { width: 100%; }
   .admin-side-menu a { padding: 7px 8px; font-size: 10px; }
 }
+
+/* Admin editors reuse the shared dialog and form controls from style.css. */
+.admin-edit-dialog { width: min(560px, calc(100% - 30px)); max-height: min(88vh, 780px); overflow-y: auto; }
+.admin-edit-dialog h2 { margin: 4px 0 14px; }
+.admin-edit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
+.admin-edit-grid .full { grid-column: 1 / -1; }
+.admin-edit-dialog textarea { width: 100%; padding: 12px; border: 1px solid #d9e1de; border-radius: 4px; background: white; font: inherit; resize: vertical; }
+.admin-edit-error { min-height: 0; margin: 0; color: #a34d40; font-size: 12px; }
+.admin-edit-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 6px; }
+@media (max-width: 620px) {
+  .admin-edit-grid { grid-template-columns: 1fr; }
+  .admin-edit-grid .full { grid-column: auto; }
+}

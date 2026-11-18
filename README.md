@@ -1,46 +1,83 @@
 # Wanderlust Travel
 
-A small travel booking demo built with HTML, CSS, and JavaScript.
+A travel agency web application built with **Vue 3**, Vite, HTML5 and CSS3 for the
+EFREI web programming project. Customers can browse and search trips and rooms,
+book them, and manage their reservations. An admin workspace manages content and
+daily operations.
 
-## Simple file structure
+## Technology
 
-- `index.html` and `home.css` — home page content and styles
-- `packages.html` and `packages.css` — trip list and search content and styles
-- `package.html` and `package.css` — trip details content and styles (the trip ID is in the URL)
-- `rooms.html` and `rooms.css` — room-only listings and search
-- `room.html` and `room.css` — details and checkout for a standalone hotel room or villa
-- `bookings.html` and `bookings.css` — booking page content and styles
-- `wishlist.html` and `wishlist.css` — wishlist page content and styles
-- `admin.html` and `admin.css` — admin page content and styles
-- `login.html` and `login.css` — sign-in and account creation
-- `panel.html` and `panel.css` — signed-in user's account and bookings
-- `style.css` — shared colours, layout, and responsive styles
-- `app.js` — fills in saved trip data and handles buttons and forms
-- `data.js` — sample trips, rooms, bookings, and localStorage functions
-- `account.js` — browser-only demo sign-in and account functions
+- Vue 3 single-file components (`.vue`)
+- Vite multi-page build (one Vue app per page)
+- HTML5 and CSS3 (the existing responsive stylesheets are preserved)
+- Browser `localStorage` for all demo data — no database or real payment gateway
 
-The CSS files have comments above their sections explaining which part of the page each group of styles controls.
+## Project structure
+
+```
+index.html, packages.html, …     Vite page entries (one per screen)
+src/entries/                     Bootstraps a Vue app for each page
+src/views/                       Page-level Vue components
+src/components/                  Shared SFCs (header, footer, cards, dialogs)
+src/lib/data.js                  Trips, rooms, bookings, wishlist, promos
+src/lib/account.js               Demo accounts and sessions
+src/lib/store.js                 Small shared reactive store
+src/lib/ui.js                    Money/date formatting helpers
+src/styles/                      Per-page and shared stylesheets
+public/assets/                   Logo and static assets
+```
+
+Each HTML file is a separate Vite entry, so a page only loads its own stylesheet
+while still sharing Vue components with the other pages.
 
 ## Run
 
-Run `npm install`, then `npm run dev`. Open the local address Vite prints in the terminal. The site uses JavaScript modules, so use the dev server instead of opening the HTML file directly.
+Requires Node.js 18 or newer.
 
-The home page has a rotating destination slideshow with arrow and dot controls, plus a prominent stay search form. The design takes general inspiration from hotel booking sites but does not use Hotels.com branding or copy its code.
+```bash
+npm install
+npm run dev
+```
 
-The assignment brief lists Vue.js as a required technology. This project uses plain JavaScript to avoid `.vue` files; check with your instructor that this is acceptable.
+Open the local address Vite prints (usually `http://localhost:5173`). To check the
+production build, run `npm run build` and then `npm run preview`. The site uses
+ES modules, so use the dev/preview server instead of opening the HTML files
+directly.
 
-Accounts and checkout are demonstrations that save information in this browser. The checkout does not send payment information anywhere and does not charge money. Do not use a real password or card details.
+## Pages
 
-Travelers can save favorite trips, earn 1 reward point for every $10 on an active booking, and redeem each point for $0.10 off at checkout. They can cancel a booking up to 3 days before its travel date. These demo records are stored in browser localStorage.
+| Page | Purpose |
+|---|---|
+| `index.html` | Home page with a destination carousel, search and featured trips |
+| `packages.html` | Trip catalogue with keyword search |
+| `package.html?id=…` | Trip details, itinerary and checkout |
+| `rooms.html` | Room search with country, price, amenity, type and rating filters |
+| `room.html?id=…` | Room details and standalone room checkout |
+| `bookings.html` | The signed-in traveler's reservations |
+| `wishlist.html` | Saved trips and rooms |
+| `login.html` | Sign in or create a demo account |
+| `panel.html` | Member dashboard: bookings, rewards, wishlist and settings |
+| `admin.html` | Admin workspace: bookings, packages and room inventory |
 
-Rooms can be booked on their own from the Rooms page. The admin dashboard side menu opens the booking list, package editor, and room editor. Admins can update trip prices, destinations, and departure dates, and room prices, names, types, locations, and available check-in date ranges.
+## Features
 
-## Demo accounts & dummy payment testing
+- Browse and search travel packages and hotel rooms.
+- Simulated checkout (no real payment), printable booking vouchers.
+- Cancel a booking up to 3 days before the travel date.
+- Members earn 1 point per $10 spent; points are worth $0.10 each at checkout.
+- Promo codes: `WELCOME10`, `SUMMER2026`, `EXPLORE50`.
+- Wishlist, rewards, member profile and password settings.
+- Admin can search and update bookings, and add, edit or delete packages and rooms.
 
-- **Traveler Demo**: `alex@example.com` / `travel123` (Phone: `+1 555-0144`)
-- **Admin Demo**: `admin@wanderlust.com` / `travel123` (Phone: `+1 555-0192`)
-- **Demo Payment Card**: Click **"⚡ Autofill Demo Card"** during checkout to auto-populate test card details (`4242 4242 4242 4242`, `12/28`, `123`).
-- **Simulated Checkout**: Simulated payment authorization with instant printable booking confirmation vouchers.
-- **Promo Codes**: `WELCOME10` (10% off) or `SUMMER2026` ($50 off).
+## Demo accounts
 
-Admin pages open after signing in with the admin account. New accounts are regular traveler accounts and open the member panel. This is a browser-only class project, not secure production authentication.
+| Role | Email | Password |
+|---|---|---|
+| Traveler | `alex@example.com` | `travel123` |
+| Admin | `admin@wanderlust.com` | `travel123` |
+
+Demo payment card: click **⚡ Autofill Demo Card** at checkout
+(`4242 4242 4242 4242`, `12/28`, `123`).
+
+All accounts, bookings and payment results are stored in this browser only. This
+is a class demonstration: do not use a real password or card.
