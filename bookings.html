@@ -2,26 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/png" href="/assets/wanderlust-mountain-logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>My Bookings | Wanderlust</title>
-  <link rel="stylesheet" href="/style.css">
-  <link rel="stylesheet" href="/bookings.css">
 </head>
 <body>
-  <header class="top"><a class="logo" href="index.html" aria-label="Wanderlust home"><img src="/assets/wanderlust-mountain-logo.png" alt="Wanderlust"></a>
-      <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="primary-navigation" aria-expanded="false"><span></span><span></span><span></span></button>
-      <nav id="primary-navigation" class="site-nav" aria-label="Main navigation"><a href="index.html">Home</a><a href="rooms.html">Stays</a><a href="packages.html">Trips</a><a id="account-link" href="login.html">Login</a></nav></header>
-  <main class="wrap page"><div class="eyebrow">YOUR TRAVEL PLANS</div><h1>My bookings</h1><p class="muted">Review or update your saved reservations.</p>
-    <p class="cancellation-policy">You can cancel a booking up to 3 days before its travel date. The cancellation option closes when fewer than 3 days remain.</p>
-    <div class="tabs" id="booking-tabs"></div><div class="booking-list" id="booking-list"></div>
-  </main><footer class="site-footer">
-    <div class="footer-inner wrap">
-      <div class="footer-brand"><a class="footer-logo" href="index.html">Wanderlust</a><p>Thoughtful places and trips, all in one place.</p></div>
-      <nav class="footer-links" aria-label="Footer navigation"><a href="rooms.html">Find a stay</a><a href="packages.html">Explore trips</a><a href="bookings.html">My bookings</a><a href="panel.html">My account</a></nav>
-    </div>
-    <div class="footer-bottom"><span>© 2026 Wanderlust Travel</span><span>Travel well. Keep the good memories.</span></div>
-  </footer>
-  <script type="module" src="/app.js"></script>
+  <div id="app"></div>
+  <script type="module" src="/src/entries/bookings.js"></script>
 </body>
 </html>

@@ -519,3 +519,6 @@ body { font-family: var(--body-font); font-synthesis: none; text-rendering: opti
   .top .site-nav a:hover, .top .site-nav a[aria-current="page"] { background: #f0f7fd; }
   .top .site-nav a[aria-current="page"]::after { display: none; }
 }
+
+/* Keep the voucher reference label above its value. */
+.voucher-ref-card > div:first-child { display: grid; gap: 2px; }
